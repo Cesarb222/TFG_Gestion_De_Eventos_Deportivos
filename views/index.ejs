@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1></h1>
+    <p>Welcome to ss </p>
+    <% if(eventos){%>
+      <h1>Los eventos son los siguientes</h1>
+      
+      
+    <% eventos.forEach((item)=>{
+      %> <p><%= item.titulo%></p>
+      <p><%=item.fecha%></p>
+      <p><%=item.descripcion%></p>
+      <a href="/sector/<%=item._id.toString()%>">Ver evento</a>
+    <%})
+  
+  } %>
+  <% if (usuario) { %>
+    <p>Bienvenido, <%= usuario.nombre %>!</p>
+  <% } else { %>
+    <p>No has iniciado sesión</p>
+  <% } %>
+  </body>
+</html>

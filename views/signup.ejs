@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% if(ErrorRegistro){ %>
+        <p><%=ErrorRegistro%></p>
+   <% }%>
+   <% if(ErrorEmailRepetido){ %>
+    <p><%=ErrorEmailRepetido%></p>
+<% }%>
+    <form action="/users/signup" method="post">
+        <input type="text" name="nombre" placeholder="nombre">
+        <input type="text" name="apellido" placeholder="apellido">
+        <input type="email" name="email" placeholder="insertaTuEmail">
+        <input type="password" name="password" placeholder="inserta tu contraseña">
+        <input type="date" name="fechaNacimiento">
+        <button type="submit">Registrate</button>
+    </form>
+    <a class="button google" href="/users/auth/google">Sign in with Google</a>
+    <a href="/users/logout">Salir</a>
+</body>
+</html>
