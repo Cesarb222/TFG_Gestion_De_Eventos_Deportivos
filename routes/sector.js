@@ -3,7 +3,7 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-router.get('/:idEvento',isAuthenticated, function(req, res, next) {
+router.get('/:idEvento', function(req, res, next) {
     const {idEvento} = req.params
     console.log(idEvento)
     res.render("sector",{

@@ -26,40 +26,23 @@ function infoButaca(){
     let butacas = document.querySelectorAll(".seleccionada");
     infoContenedor.innerHTML = ""; 
     butacas.forEach(item => {
-        const p = document.createElement("p");
-        p.textContent = item.dataset.valuebutaca;
-        infoContenedor.append(p);
+        /* console.log(item.dataset.valuebutaca) */
+        let datosSplit = item.dataset.valuebutaca.split(",")
+        console.log(datosSplit)
+        infoContenedor.innerHTML+=
+        ` <input type="text" name="fila[]" readonly value="${datosSplit[0]}">
+        <label>Butaca</label>
+        <input type="number" name="numButaca[]" readonly value="${datosSplit[1]}">
+        <input type="hidden" name="sector[]" readonly value="${datosSplit[2]}">
+        <input type="hidden" name="evento[]" readonly value="${datosSplit[3]}">
+        `
     });
+    if(butacas.length>0){
+        let boton = document.createElement("button")
+        boton.setAttribute("type","submit")
+        boton.innerHTML="Procesar Compra"
+        infoContenedor.append(boton)
+    }
 }
 
 console.log(butacas)
-/* formSelect.addEventListener("change", () => {
-    const butacas = formSelect.querySelectorAll("input[type=checkbox]:not(#reservada)");
-    const checkbox = formSelect.querySelectorAll("input[type=checkbox]:checked");
-    const infoContenedor = document.getElementById("infoSeleccionadas");
-
-    if (checkbox.length >= 3) {
-        alert("No puedes seleccionar más de 3 entradas");
-
-        // Cuando ya tenga las 3 butacas seleccionadas deshabilito las demas
-        butacas.forEach(item => {
-            if(item.checked == false){
-                item.disabled = true;
-            }
-        });
-    } else {
-        // Si tenemos menos de 3 butacas selecciionadas, habilito todas
-        butacas.forEach(item => {
-            item.disabled = false
-    });
-    }
-
-    // Muestro la información de la fila y butaca en este contenedor 👇
-    infoContenedor.innerHTML = ""; 
-    checkbox.forEach(item => {
-        const info = item.value;
-        const p = document.createElement("p");
-        p.textContent = info;
-        infoContenedor.append(p);
-    });
-}); */

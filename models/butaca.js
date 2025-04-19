@@ -14,6 +14,15 @@ butacaSchema.methods.findButacasSector = async function (IDsector) {
         }).then(result => {return result})
         .catch(error => console.log(error));
 }
+butacaSchema.methods.findButaca = async function (IDsector,fila,numButaca) {
+    const butaca = mongoose.model("butaca",butacaSchema)
+    return await butaca.find({
+        fila:fila,
+        num_butaca:numButaca,
+        sector:IDsector
+    }).then(result => {return result})
+    .catch(error => console.log(error));
+}
 
 butacaSchema.methods.addButaca = async function (){
     await this.save()
