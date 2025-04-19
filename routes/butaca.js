@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
     res.send('respond with a resource');
 });
 
-router.get('/seleccion/:Sector/:idEvento', async (req, res, next) => {
+router.get('/seleccion/:Sector/:idEvento',isAuthenticated, async (req, res, next) => {
 //actualizar por parametro de evento
 const { Sector, idEvento } = req.params
 const sec = new sector()
@@ -28,4 +28,11 @@ const ocupadas = entrad.map(item => item.butaca.toString());
     });
 });
 
+function isAuthenticated(req, res, next) {
+    if(req.isAuthenticated()) {
+        return next();
+    }
+
+    res.redirect('/')
+}
 module.exports = router;

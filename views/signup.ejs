@@ -12,11 +12,16 @@
    <% if(ErrorEmailRepetido){ %>
     <p><%=ErrorEmailRepetido%></p>
 <% }%>
+<% if(contraseñasNoCoincide){ %>
+    <p><%=contraseñasNoCoincide%></p>
+<% }%>
+
     <form action="/users/signup" method="post">
         <input type="text" name="nombre" placeholder="nombre">
         <input type="text" name="apellido" placeholder="apellido">
         <input type="email" name="email" placeholder="insertaTuEmail">
         <input type="password" name="password" placeholder="inserta tu contraseña">
+        <input type="password" name="confirmarPassword" placeholder="confirmar tu contraseña">
         <input type="date" name="fechaNacimiento">
         <button type="submit">Registrate</button>
     </form>

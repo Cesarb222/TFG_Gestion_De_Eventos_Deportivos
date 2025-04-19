@@ -39,7 +39,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
   secret: "ElJamonLoMejorDeEspaña",
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  rolling: true, // para renovar la cookie de sesion
+  cookie: {
+    maxAge: 24 * 60 * 60 * 1000  // dura un dia
+  }
 }));
 app.use(flash());
 app.use(passport.initialize());
@@ -48,6 +52,7 @@ app.use(passport.session());
 app.use((req, res, next) => {
   app.locals.ErrorRegistro = req.flash('ErrorRegistro');
   app.locals.ErrorEmailRepetido = req.flash('ErrorEmailRepetido');
+  app.locals.contraseñasNoCoincide = req.flash('contraseñasNoCoincide');
   app.locals.user = req.user;
   next();
 });

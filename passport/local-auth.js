@@ -40,7 +40,7 @@ passport.use("local-signup", new LocalStrategy({
     passwordField: "password",
     passReqToCallback: true  //Con esto permitimos que se pase el objeto req
 }, async (req, email, password, done) => {
-    const { nombre, apellido, fechaNacimiento } = req.body
+    const { nombre, apellido, fechaNacimiento,confirmarPassword } = req.body
     const fechaUsuario = new Date(fechaNacimiento)
     const fechaHoy = new Date()
     let edad = fechaHoy.getFullYear() - fechaUsuario.getFullYear();
@@ -50,27 +50,48 @@ passport.use("local-signup", new LocalStrategy({
     //Para saber si es mayor de 16 años y pueda realizar compras
     if (edad > 16 || (edad === 16 && (mes > 0 || (mes === 0 && dia >= 0)))) {
         const user = new usuarios()
-        const userExiste = await user.findByEmail(email)
-        if (!userExiste) {
-            const usuario = new usuarios({
-                nombre: nombre,
-                ap: apellido,
-                rol: "usuario",
-                correo: email,
-                edad: fechaNacimiento,
-                contraseña: user.encriptar(password)
-            })
-
-            await usuario.addUser()
-                .then(result => console.log(result))
-                .catch(error => console.log(error));
-            done(null, usuario);
-        } else {
+        if(confirmarPassword == password){
+            const userExiste = await user.findByEmail(email)
+            if (!userExiste) {
+                const usuario = new usuarios({
+                    nombre: nombre,
+                    ap: apellido,
+                    rol: "usuario",
+                    correo: email,
+                    edad: fechaNacimiento,
+                    contraseña: user.encriptar(password)
+                })
+    
+                await usuario.addUser()
+                    .then(result => console.log(result))
+                    .catch(error => console.log(error));
+                done(null, usuario);
+        }else {
             return done(null, false, req.flash("ErrorEmailRepetido", "Este email ya esta en uso."))
+        }
+        
+        } else {
+            return done(null, false, req.flash("contraseñasNoCoincide", "Las contraseñas no coinciden."))
         }
 
     } else {
         return done(null, false, req.flash("ErrorRegistro", "No puedes registrarte al ser menor de 16 años"))
     }
 
-}))
+}));
+
+passport.use('local-signin', new LocalStrategy({
+    usernameField: "email",
+    passwordField: "password",
+    passReqToCallback: true
+}, async (req, email, password, done) => {
+    var user = new usuarios();
+        user = await user.findByEmail(email);
+    if(!user) {
+        return done(null, false, req.flash('ErrorEmailRepetido', 'No hay registrado este correo'));
+    }
+    if(!user.compararContraseña(password)) {
+        return done(null, false, req.flash('contraseñasNoCoincide', 'Contraseña incorrecta'));
+    }
+    return done(null, user);
+}));
