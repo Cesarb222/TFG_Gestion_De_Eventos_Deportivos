@@ -52,7 +52,19 @@ eventoSchema.methods.findByID = async function(id){
     .then(result =>{return result})
     .catch(error => console.log(error))
 }
-        
+
+eventoSchema.methods.findEventAndUpdateImage = async function(fecha,genero,titulo,img){
+    const eventos = mongoose.model("eventos",eventoSchema)
+    return await eventos.findOneAndUpdate({
+        titulo:titulo,
+        fecha:fecha,
+        genero:genero
+    },{
+        imagen:"img"
+    },{ new: true }).then(result => console.log(result))
+    .catch(error => console.log(error));
+}
+
 eventoSchema.methods.addEvent = async function (){
     await this.save()
     .then(result => console.log(result))

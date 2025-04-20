@@ -2,7 +2,7 @@
 <html lang="es">
   <head>
     <title></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/output.css' />
   </head>
   <body>
     <h1></h1>
@@ -16,6 +16,7 @@
       <p><%=item.fecha%></p>
       <p><%=item.descripcion%></p>
       <a href="/sector/<%=item._id.toString()%>">Ver evento</a>
+      <img src="/images/imagenesEventos/<%=item.imagen%>" alt="">
     <%})
   
   } %>
@@ -23,5 +24,6 @@
     <p>Bienvenido, <%= usuario.nombre %>!</p>
   <% }%>
   <a href="/users/signin">IniciarSesion</a>
+  
   </body>
 </html>

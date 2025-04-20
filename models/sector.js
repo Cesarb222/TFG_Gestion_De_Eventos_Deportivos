@@ -16,6 +16,8 @@ sectorSchema.methods.findByNameSector = async function (nombre) {
     return sector;
 }
 
+
+
 sectorSchema.methods.addSector = async function (){
     await this.save()
     .then(result => console.log(result))

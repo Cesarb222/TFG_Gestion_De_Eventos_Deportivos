@@ -9,6 +9,7 @@ const flash = require('connect-flash');
 
 
 var indexRouter = require('./routes/index');
+var adminRouter = require('./routes/admin');
 var usersRouter = require('./routes/users');
 const butacaRouter = require("./routes/butaca.js");
 const sectorRouter = require("./routes/sector.js");
@@ -59,6 +60,7 @@ app.use((req, res, next) => {
 
 //rutas
 app.use('/', indexRouter);
+app.use('/admin', adminRouter);
 app.use('/users', usersRouter);
 app.use('/butaca', butacaRouter);
 app.use('/sector', sectorRouter);
