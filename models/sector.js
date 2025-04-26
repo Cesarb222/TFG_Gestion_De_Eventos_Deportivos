@@ -16,6 +16,11 @@ sectorSchema.methods.findByNameSector = async function (nombre) {
     return sector;
 }
 
+sectorSchema.methods.findByZonaSector = async function (id) {
+    const sectores = mongoose.model("sector",sectorSchema)
+    const sector = await sectores.findById(id)
+    return sector;
+}
 
 
 sectorSchema.methods.addSector = async function (){

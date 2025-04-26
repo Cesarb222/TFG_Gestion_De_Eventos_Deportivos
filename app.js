@@ -13,6 +13,7 @@ var adminRouter = require('./routes/admin');
 var usersRouter = require('./routes/users');
 const butacaRouter = require("./routes/butaca.js");
 const sectorRouter = require("./routes/sector.js");
+const paypalRouter = require("./routes/paypal.js")
 
 const usuarios = require('./models/usuarios.js');
 const estadio = require('./models/estadio.js');
@@ -64,6 +65,7 @@ app.use('/admin', adminRouter);
 app.use('/users', usersRouter);
 app.use('/butaca', butacaRouter);
 app.use('/sector', sectorRouter);
+app.use('/paypal',paypalRouter)
 
 
 
