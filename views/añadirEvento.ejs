@@ -6,6 +6,9 @@
     <title>Document</title>
 </head>
 <body>
+    <%if(fechaEvento){%>
+        <p><%=fechaEvento%></p>
+    <%}%>
     <form action="/admin/nuevoEvento" enctype="multipart/form-data" method="POST">
         <input type="text" name="titulo" required>
         <input type="datetime-local" name="fecha" required>

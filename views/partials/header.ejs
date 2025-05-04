@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="/stylesheets/header.css">
+<header>
+    <nav>
+        <div>
+            <a href="/"> <img src="/images/logoTFG.webp" alt="Logo"></a>
+            <a href="/"><strong>TikectDeporte</strong></a>
+        </div>
+        <label for="check">&#8801</label>
+        <form action="/users" method="post">
+            <input type="search" placeholder="Busca tu evento... ">
+            
+        </form>
+        <input type="checkbox" name="check" id="check">
+        <ul class="mHamburguesa">
+        
+            
+            <ul id="mHamburguesa">
+                <li>
+                    <button>
+                        <a href="">Eventos</a>
+                    </button>
+                </li>
+                <% if (user) { %>
+                    <li>
+                        <button><a href="/users/perfil">Perfil</a></button>
+                    </li>
+                    <li>
+                        <button><a href="/users/logout">salir</a></button>
+                    </li>
+                    
+                    
+                    
+                <% }else{%>
+                    <li>
+                        <button><a href="/users/signin">Singin</a></button>
+                    </li>
+                    <li>
+                        <button><a href="/users/signup">Singup</a></button>
+                    </li>
+                <%}%>
+            </ul>
+        </ul>
+    </nav>
+</header>

@@ -55,6 +55,7 @@ app.use((req, res, next) => {
   app.locals.ErrorRegistro = req.flash('ErrorRegistro');
   app.locals.ErrorEmailRepetido = req.flash('ErrorEmailRepetido');
   app.locals.contraseñasNoCoincide = req.flash('contraseñasNoCoincide');
+  app.locals.fechaEvento = req.flash("fechaEvento")
   app.locals.user = req.user;
   next();
 });

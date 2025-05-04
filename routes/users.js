@@ -40,6 +40,10 @@ router.get('/logout', (req, res, next) => {
   }); 
 });
 
+router.get('/prueba', (req, res, next) => {
+  res.render("partials/header")
+});
+
 function isAuthenticated(req, res, next) {
   if(req.isAuthenticated()) {
       return next();

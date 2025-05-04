@@ -1,5 +1,11 @@
-body {
+@import url("./index.css");
+:root{
+  --body-light:#fafafa;
+}
+
+body{
   margin: 0;
-  padding: 0px;
+  padding: 0;
+  background-color: var(--body-light);
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }

@@ -33,17 +33,25 @@ router.post('/nuevoEvento', upload.single('imagen') , async function(req, res, n
     console.log(req.file)
     const event = new eventos()
 
-    const evento = new eventos({
-        titulo:req.body.titulo,
-        fecha:req.body.fecha,
-        imagen:req.file.filename,
-        genero:req.body.genero,
-        descripcion:req.body.descripcion,
-        lugar:"67fa83550a116aaecc4cfe81"
-    })
-    await evento.addEvent()
-
-    res.render("añadirEvento");
+    const fechaHoy = new Date()
+    const fechaEvento = new Date(req.body.fecha)
+    if(fechaHoy > fechaEvento){
+        req.flash("fechaEvento", "La fecha no puede ser anterior a mañana")
+        res.redirect("/admin/nuevoEvento");
+    }else{
+        const evento = new eventos({
+            titulo:req.body.titulo,
+            fecha:req.body.fecha,
+            imagen:req.file.filename,
+            genero:req.body.genero,
+            descripcion:req.body.descripcion,
+            lugar:"67fa83550a116aaecc4cfe81"
+        })
+        await evento.addEvent()
+    
+        res.render("añadirEvento");
+    }
+    
 });
 
 function isAuthenticated(req, res, next) {

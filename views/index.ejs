@@ -2,9 +2,20 @@
 <html lang="es">
   <head>
     <title></title>
-    <link rel='stylesheet' href='/stylesheets/output.css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+    <%- include('partials/header') %>
+    <section class="sectionIndex">
+      <article>
+        <h1>EVENTO DESTACADO</h1>
+        <p>España VS Nueva Zelanda</p>
+        <p>Estadio Salto Del Caballo, Toledo</p>
+        <button><a href="/sector/68051f5653355964d518385b">VER ENTRADAS</a></button>
+      </article>
+      <div class="imagenLateral"></div>
+    </section>
     <h1></h1>
     <p>Welcome to ss </p>
     <% if(eventos){%>
@@ -16,7 +27,7 @@
       <p><%=item.fecha%></p>
       <p><%=item.descripcion%></p>
       <a href="/sector/<%=item._id.toString()%>">Ver evento</a>
-      <img src="/images/imagenesEventos/<%=item.imagen%>" alt="">
+      <!-- <img src="/images/imagenesEventos/<%=item.imagen%>" alt=""> -->
     <%})
   
   } %>
@@ -25,5 +36,8 @@
   <% }%>
   <a href="/users/signin">IniciarSesion</a>
   
+  <script src="/javascripts/header.js"></script>
+
   </body>
+
 </html>

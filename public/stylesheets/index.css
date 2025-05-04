@@ -1,0 +1,146 @@
+:root{
+    --body-light:#fff8f1;
+}
+.sectionIndex{
+    display: flex;
+    height: 25rem;
+    z-index: -12;
+}
+.sectionIndex article{
+    padding-left: 70px;
+    width: 60%;
+    height: inherit;
+    background-color: #111111;
+    clip-path: polygon(100% 0, 0% 1100%, 0 0);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background:linear-gradient(150deg, #232323,#232323,#333333);
+}
+.sectionIndex article h1{
+    color: #ff6700;
+    font-size: 20px;
+    font-weight: bold;
+}
+.sectionIndex article p {
+    color: #fff8f1;
+}
+.sectionIndex article button{
+    position: relative;
+    z-index: 100;
+    cursor: pointer;
+    width: 20%;
+    padding: 10px 0;
+    border: transparent;
+    border-radius: 20px;
+    overflow: hidden;
+    background: linear-gradient(90deg, #ff6700,#ff8b2c);
+    transition: margin 0.1s ease-in-out;
+    box-shadow: 1px 1px 20px -5px #ff6700;
+
+}
+.sectionIndex article button a{
+    text-decoration: none;
+    color: #1c3e4e;
+    font-weight: bolder;
+    
+}
+.imagenLateral {
+    z-index: -11;
+    width: 60%;
+    background-image: url("/images/imagenesEventos/imagen-EspaÃ±aRugby.jpeg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position:center;
+    margin-left: -100px;
+}
+.sectionIndex article h1{
+    border-bottom: 2px solid #ff6700 ;
+    width: 15rem;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    justify-self: left;
+}
+.sectionIndex article :nth-child(2){
+    font-weight: bolder;
+    font-size: 30px;
+}
+/* @media (max-width:600px){
+    .sectionIndex article{
+        clip-path: polygon(90% 0, 0% 800%, 0 0);
+        
+    }
+} */
+
+.sectionIndex article button::before {
+    content: "";
+    position: absolute;
+    clip-path: circle(50% at 50% 50%);
+    top: 0;
+    left: -50px;
+    height: 100%;
+    width: 0;
+    background-color: light-dark(#1c3e4e, #292929);
+    padding: 20px;
+    z-index: -1;
+    transition: width 0.5s ease-in-out;
+    
+}
+.sectionIndex article button:hover{
+    margin-bottom: 3px;
+}
+.sectionIndex article button:hover::before {
+    width: 200%;
+}
+@media (max-width:600px){
+    .sectionIndex{
+        flex-wrap: wrap;
+        flex-direction: column;
+        height: auto;
+    }
+    .sectionIndex article{
+        clip-path: none;
+        order: 2;
+        width: auto;
+        z-index: 1;
+    }
+    .sectionIndex article button{
+        margin: 0 ;
+    }
+    .imagenLateral {
+        order: 1;
+        height: 300px;
+        width: 100%;
+        z-index: -1;
+        margin: 0;
+        width: auto;
+        background-image: url("/images/imagenesEventos/imagen-EspaÃ±aRugby.jpeg");
+        background-repeat: no-repeat;
+        object-fit:cover;
+        background-size:cover;
+        background-position:top;
+        
+    }
+    .sectionIndex article button{
+        width: 50%;
+        margin-bottom: 15px;
+    
+    }
+}
+@media (max-width:350px){
+    .sectionIndex{
+        flex-wrap: wrap;
+        flex-direction: column;
+        height: auto;
+    }
+    .sectionIndex article :nth-child(2){
+        font-weight: bolder;
+        font-size: 15px;
+    }
+    .sectionIndex article{
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+    }
+}
