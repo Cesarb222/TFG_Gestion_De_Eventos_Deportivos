@@ -1,6 +1,8 @@
 @import url("./index.css");
+@import url("./header.css");
+@import url("./footer.css");
 :root{
-  --body-light:#fafafa;
+  --body-light:#f1f2f6;
 }
 
 body{

@@ -36,9 +36,8 @@
     border-radius: 20px;
     overflow: hidden;
     background: linear-gradient(90deg, #ff6700,#ff8b2c);
-    transition: margin 0.1s ease-in-out;
+    transition: margin-bottom 0.1s ease-in-out;
     box-shadow: 1px 1px 20px -5px #ff6700;
-
 }
 .sectionIndex article button a{
     text-decoration: none;
@@ -65,13 +64,8 @@
 .sectionIndex article :nth-child(2){
     font-weight: bolder;
     font-size: 30px;
+    margin-bottom: 2px;
 }
-/* @media (max-width:600px){
-    .sectionIndex article{
-        clip-path: polygon(90% 0, 0% 800%, 0 0);
-        
-    }
-} */
 
 .sectionIndex article button::before {
     content: "";
@@ -84,14 +78,168 @@
     background-color: light-dark(#1c3e4e, #292929);
     padding: 20px;
     z-index: -1;
-    transition: width 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
     
 }
 .sectionIndex article button:hover{
     margin-bottom: 3px;
 }
 .sectionIndex article button:hover::before {
-    width: 200%;
+    width: 300%;
+    margin-left: -100px;
+    box-shadow: 1px 1px 20px -5px #ff6700;
+}
+.sectionIndex article button:hover {
+    box-shadow: 1px 1px 20px -5px #ffffff;
+}
+.sectionIndex article button a {
+    transition: color 0.3s ease-in;
+}
+.sectionIndex article button:hover a {
+    color: #fff;
+}
+.containerIndex{
+    width: 95%;
+    margin: 0 auto;
+}
+
+.mainIndex h2,
+.categorias h2 {
+    margin-bottom: 0px;
+    margin-top: 50px;
+}
+.containerIndex + :not(hr){
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+.containerIndex hr,
+.categorias hr{
+    margin: 0;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 400px;
+    border: 2px solid #ff6700;
+    clip-path: polygon(0 0, 0% 100%, 100% 100%);
+}
+.cartas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    width: 80%;
+    margin-top: 20px;
+}
+.cardEvento{
+    width: 300px;
+    border-radius: 1%;
+    background-color: #f5f5f5;
+    overflow: hidden;
+    box-shadow: 4px 4px 20px 1px #111111;
+
+}
+.cardEvento .arriba{
+    background-size: cover;
+    background-position: center;
+    aspect-ratio: 16/9;
+    padding-top: 20px;
+}
+.cardEvento .abajo{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+.cardEvento .abajo p{
+    margin-left: 15px;
+}
+.cardEvento .abajo button{
+    position: relative;
+    z-index: 10;
+    padding: 10px 25px;
+    cursor: pointer;
+    border: transparent;
+    border-radius: 20px;
+    overflow: hidden;
+    background: linear-gradient(90deg, #ff6700,#ff8b2c);
+    transition: margin-bottom 0.1s ease-in-out;
+    margin: 0 auto;
+    box-shadow: 1px 1px 20px -5px #ff6700;
+}
+.cardEvento .abajo button::before {
+    content: "";
+    position: absolute;
+    clip-path: circle(50% at 50% 50%);
+    top: -10px;
+    left: -70px;
+    height: 200%;
+    width: 0;
+    background-color: #1c3e4e;
+    padding: 20px;
+    z-index: -1;
+    transition: width 0.5s ease-in-out;
+    
+}
+
+.cardEvento .abajo button:hover::before {
+    width: 300%;
+}
+.cardEvento .abajo button a {
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s ease-in;
+}
+.cardEvento .abajo button:hover a {
+    color: #fff;
+}
+.mainIndex .categorias {
+    margin-top: 20px;
+    width: 95%;
+    margin: 0 auto;
+}
+.mainIndex .categorias div{
+    display: flex;
+    gap: 50px;
+    width: 80%;
+    justify-content: center;
+}
+.mainIndex .categorias article img{
+    width: 70px;
+    height: 70px;
+    filter: drop-shadow(1px 2px 3px rgb(58, 58, 58,0.5));
+    transition: all 0.2s ease-in;
+}
+.mainIndex .categorias article {
+    background-color: #fff;
+    width: 130px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    flex-direction: column;
+    border-radius: 30px;
+}
+.mainIndex .categorias article:hover img,
+.mainIndex .categorias article:hover p{
+    transform: scale(1.2);
+}
+.mainIndex .categorias article p{
+    transition: all 0.2s ease-in;
+}
+.mainIndex div{
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (max-width:1200px){
+    .cartas{
+        justify-content: center;
+        align-items: center;
+    }
 }
 @media (max-width:600px){
     .sectionIndex{
@@ -127,6 +275,13 @@
         margin-bottom: 15px;
     
     }
+    .mainIndex .categorias div{
+        flex-wrap: wrap;
+    }
+    .mainIndex .categorias div article{
+        width: 80%;
+    }
+    
 }
 @media (max-width:350px){
     .sectionIndex{
@@ -142,5 +297,14 @@
         padding: 0;
         justify-content: center;
         align-items: center;
+    }
+}
+
+@media (max-width:450px){
+    .containerIndex hr,
+    .categorias hr{
+        width: 200px;
+        border: 2px solid #ff6700;
+        clip-path: polygon(0 0, 0% 100%, 100% 100%);
     }
 }

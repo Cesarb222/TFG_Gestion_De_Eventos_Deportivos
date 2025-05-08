@@ -1,7 +1,7 @@
 
 header{
     background: linear-gradient(135deg, #ff6700,#ff8b2c ,#ffa552);
-    z-index: 10;
+    z-index: 100;
 }
 
 header nav{

@@ -4,6 +4,7 @@
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="shortcut icon" href="/images/logoTFG.webp" type="image/x-icon">
   </head>
   <body>
     <%- include('partials/header') %>
@@ -11,31 +12,75 @@
       <article>
         <h1>EVENTO DESTACADO</h1>
         <p>España VS Nueva Zelanda</p>
-        <p>Estadio Salto Del Caballo, Toledo</p>
+        <p>2 Sep 2025, 19:00. Estadio Salto Del Caballo, Toledo</p>
         <button><a href="/sector/68051f5653355964d518385b">VER ENTRADAS</a></button>
       </article>
       <div class="imagenLateral"></div>
     </section>
-    <h1></h1>
-    <p>Welcome to ss </p>
-    <% if(eventos){%>
-      <h1>Los eventos son los siguientes</h1>
+
+    <main class="mainIndex">
       
+      <section class="containerIndex">
+        <h2>PROXIMOS EVENTOS</h2>
+        <hr>
+        <% if(eventos){
+          const meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];  
+        %>
+          
+          
+        <div class="cartas">
+          <% for (let i = 1; i < eventos.length && i < 4; i++) { 
+              let fecha = new Date(eventos[i].fecha)
+              let mes = fecha.getMonth()+1
+              let dia = fecha.getDate()
+              let año = fecha.getFullYear()
+              let hora = fecha.getHours()
+              let min = String(fecha.getMinutes()).padStart(2, "0");
+            %>
+          
+
+          
+            <section class="cardEvento">
+              
+              <article class="arriba" style="background-image: url('/images/imagenesEventos/<%= eventos[i].imagen %>') ;">
+                
+              </article>
+              
+              <article class="abajo">
+                <p><%= eventos[i].titulo %></p>
+                <hr>
+                <p><%=`${dia} ${meses[mes]} ${año}, ${hora}:${min}`%></p>
+                <button><a href="/sector/<%= eventos[i]._id.toString() %>">Ver evento</a></button>
+              </article>
+              
+            </section>
+
+          <% } %>
+        </div>
+        <% } %>
+      </section>
+
       
-    <% eventos.forEach((item)=>{
-      %> <p><%= item.titulo%> </p>
-      <p><%=item.fecha%></p>
-      <p><%=item.descripcion%></p>
-      <a href="/sector/<%=item._id.toString()%>">Ver evento</a>
-      <!-- <img src="/images/imagenesEventos/<%=item.imagen%>" alt=""> -->
-    <%})
-  
-  } %>
-  <% if (usuario) { %>
-    <p>Bienvenido, <%= usuario.nombre %>!</p>
-  <% }%>
-  <a href="/users/signin">IniciarSesion</a>
-  
+      <section class="categorias">
+        <h2>Explora por Categorías</h2>
+        <hr>
+        <div>
+          <article id="futbol" class="categoria">
+            <img src="/images/football-ball-soccer-svgrepo-com.svg" alt="">
+            <p><strong>Futbol</strong></p>
+          </article>
+          <article id="Rugby" class="categoria">
+            <img src="/images/ball-rugby-svgrepo-com%20(1).svg" alt="">
+            <p><strong>Rugby</strong></p>
+          </article>
+          <article id="Rugby" class="categoria">
+            <img src="/images/ticket-svgrepo-com.svg" alt="">
+            <p><strong>Más Eventos</strong></p>
+          </article>
+        </div>
+      </section>
+    </main>
+    <%- include('partials/footer') %>
   <script src="/javascripts/header.js"></script>
 
   </body>
