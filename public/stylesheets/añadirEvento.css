@@ -1,0 +1,206 @@
+.mainAñadirEvento {
+    width: 55%;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 50px;
+    max-width: 60vw;
+    overflow: hidden;
+}
+
+.mainAñadirEvento hr {
+    margin-top: -10px;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 3px solid #ff6700;
+    outline: none;
+    background-color: #ff6700;
+}
+
+.mainAñadirEvento form input,
+.mainAñadirEvento form div label,
+.mainAñadirEvento form div select {
+    display: block;
+    height: 30px;
+}
+
+.mainAñadirEvento form textarea {
+    display: block;
+    width: 100%;
+    height: 32px;
+    width: 20rem;
+    margin-top: 15px;
+}
+
+.mainAñadirEvento form input,
+.mainAñadirEvento form select {
+    width: 20rem;
+}
+
+.mainAñadirEvento form div select {
+    margin-top: 10px;
+    height: 33px;
+}
+
+.mainAñadirEvento form div input[type="datetime-local"] {
+    height: 33px;
+}
+
+.mainAñadirEvento form input {
+    margin-top: 15px;
+}
+
+.mainAñadirEvento form {
+    margin: 0 auto;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.mainAñadirEvento form div {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+    gap: 10px;
+    justify-content: space-evenly;
+}
+
+.mainAñadirEvento form input,
+.mainAñadirEvento form select,
+.mainAñadirEvento form textarea {
+    background-color: #dddddb;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 20px -8px #868686;
+    transition: all 0.3s ease-in;
+}
+
+.mainAñadirEvento form input:focus,
+.mainAñadirEvento form select:focus,
+.mainAñadirEvento form textarea:focus {
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 20px -5px #ff6700;
+}
+
+.imagenLabel input[type="file"] {
+    display: none;
+}
+
+.imagenLabel {
+    background-color: #dddddb;
+    width: 20rem;
+    margin-top: 27px;
+    padding: 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    /* display: inline-block;
+  font-weight: bold; */
+}
+
+.mainAñadirEvento form button {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background: linear-gradient(90deg, #ff6700, #ff8b2c);
+    box-shadow: 1px 1px 20px -5px #ff6700;
+    border: navajowhite;
+    padding: 15px 19px;
+    color: #fff;
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: 17px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media (max-width: 1270px) {
+
+    .mainAñadirEvento form input,
+    .mainAñadirEvento form select,
+    .mainAñadirEvento form textarea,
+    .imagenLabel {
+        width: 15rem;
+    }
+}
+
+@media (max-width: 950px) {
+
+    .mainAñadirEvento form input,
+    .mainAñadirEvento form select,
+    .mainAñadirEvento form textarea,
+    .imagenLabel {
+        width: 10rem;
+    }
+}
+
+@media (max-width: 650px) {
+    .mainAñadirEvento {
+    width: auto;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 50px;
+    max-width: 60vw;
+    overflow: hidden;
+}
+    .mainAñadirEvento form div:first-child label:nth-child(2) {
+        margin-top: 35px;
+    }
+
+    .mainAñadirEvento form div:nth-child(3) label:nth-child(2) {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .mainAñadirEvento form input,
+    .mainAñadirEvento form select,
+    .mainAñadirEvento form textarea,
+    .imagenLabel {
+        width: 10rem;
+    }
+
+    .mainAñadirEvento {
+        width: 90%;
+    }
+
+    .mainAñadirEvento form div:first-child label:nth-child(2) {
+        margin-top: 35px;
+    }
+
+    .mainAñadirEvento form div:nth-child(3) label:nth-child(2) {
+        margin-top: 40px;
+    }
+}
+.mainAñadirEvento p{
+    text-align: center;
+    font-weight: bolder;
+    font-size: 17px;
+    color: red;
+}
+@media (max-width: 280px) {
+
+    .mainAñadirEvento form input,
+    .mainAñadirEvento form select,
+    .mainAñadirEvento form textarea,
+    .imagenLabel {
+        width: 7rem;
+    }
+
+    .mainAñadirEvento {
+        width: 100%;
+    }
+
+    .mainAñadirEvento form div:first-child label:nth-child(2) {
+        margin-top: 35px;
+    }
+
+    .mainAñadirEvento form div:nth-child(3) label:nth-child(2) {
+        margin-top: 40px;
+    }
+}

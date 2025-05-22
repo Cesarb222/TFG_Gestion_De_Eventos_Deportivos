@@ -129,13 +129,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 12px;
+    gap: 20px;
+    row-gap: 50px;
     width: 80%;
     margin-top: 20px;
 }
 .cardEvento{
-    width: 300px;
-    border-radius: 1%;
+    width: 500px;
+    border-radius: 20px;
     background-color: #f5f5f5;
     overflow: hidden;
     box-shadow: 4px 4px 20px 1px #111111;
@@ -144,8 +145,8 @@
 .cardEvento .arriba{
     background-size: cover;
     background-position: center;
-    aspect-ratio: 16/9;
-    padding-top: 20px;
+    aspect-ratio: 5/2;
+    padding-top: 50px;
 }
 .cardEvento .abajo{
     height: auto;
@@ -155,12 +156,14 @@
     padding-bottom: 20px;
 }
 .cardEvento .abajo p{
+    
+    margin: 5px;
     margin-left: 15px;
 }
 .cardEvento .abajo button{
     position: relative;
     z-index: 10;
-    padding: 10px 25px;
+    padding: 10px 40px;
     cursor: pointer;
     border: transparent;
     border-radius: 20px;

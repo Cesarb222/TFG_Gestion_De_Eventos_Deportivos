@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <%- include('partials/header') %>
+        <main class="mainEventos">
+            <section class="busqueda">
+                <h1>Resultados de su busqueda: <%=nombre%>
+                </h1>
+                <p>Hay <%=evento.length%> resultados que coinciden con su busqueda</p>
+            </section>
+            <section class="containerEventos">
+                <%if(evento.length > 0){ 
+                    const meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
+                    evento.forEach(item=>{
+                    let fecha = new Date(item.fecha)
+                    let mes = fecha.getMonth()+1
+                    let dia = fecha.getDate()
+                    let año = fecha.getFullYear()
+                    let hora = fecha.getHours()
+                    let min = String(fecha.getMinutes()).padStart(2, "0");
+                    %>
+                <section class="cardEvento">
+                    <article class="arriba" style=" background-image: url('/images/imagenesEventos/<%= item.imagen %>');"></article>
+
+                    <article class="abajo">
+                        <p>
+                            <strong><%= item.titulo %></strong>
+                        </p>
+                        <p> 📅 <%=`${dia} ${meses[mes]} ${año}, ${hora}:${min}`%></p>
+                        <%if(!item.estado){%>
+                            <button disabled>
+                                <a>CANCELADO</a>
+                            </button>
+                        <%}else{%>
+                            <button disabled>
+                                <a href="/eventos/<%= item._id.toString() %>">VER EVENTO</a>
+                            </button>
+                        <%}%>
+                    </article>
+                </section>
+                <%}) %>
+            <%}%>
+            </section>
+            
+        </main>
+        <%- include('partials/footer') %>
+</body>
+
+</html>

@@ -10,7 +10,7 @@ const estadioSchema = new Schema({
     direccion: { type: String, required: true },
 });
 
-estadioSchema.methods.findByID= async function (id) {
+estadioSchema.methods.findByIDEstadio= async function (id) {
     const estadio = mongoose.model("estadio",estadioSchema)
     return await estadio.findById(id)
 }

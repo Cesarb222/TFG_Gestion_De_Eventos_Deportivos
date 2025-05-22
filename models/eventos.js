@@ -8,31 +8,22 @@ const eventoSchema = new Schema({
     imagen:{type:String},
     genero:{type:String,required:true},
     descripcion: {type:String,required:true},
-    lugar: {type: mongoose.Schema.Types.ObjectId, ref:'estadio',required:true}
+    lugar: {type: mongoose.Schema.Types.ObjectId, ref:'estadio',required:true},
+    precio: {type:Number,required:true},
+    estado: {type:Boolean}
 })
-
-eventoSchema.methods.findEvents= async function(fInicio,fFin){
-    const hoy = new Date();
-    try{
-        if(fInicio>fFin){
-            throw new Error("La fecha de busqueda inicial no puede ser mayor a hoy")
-        }else if(fInicio>hoy){
-            throw new Error("La fecha de busqueda inicial no puede ser ")
-        }else{
-            const eventos = mongoose.model("eventos",eventoSchema);
-            return await eventos.find({
-                fecha:{ $gte: fInicio, $lte: fFin}
-            })
-        }
-        
-    }catch(error){
-        console.log(error)
-    }
-}
 
 eventoSchema.methods.findAll = async function () {
     const eventos = mongoose.model("eventos",eventoSchema)
     return await eventos.find()
+    .then(result =>{return result})
+    .catch(error => console.log(error))
+}
+
+eventoSchema.methods.buscadorHeader = async function (palabra) {
+    const eventos = mongoose.model("eventos",eventoSchema)
+    const regex = new RegExp(palabra,"i")
+    return await eventos.find({titulo:regex})
     .then(result =>{return result})
     .catch(error => console.log(error))
 }
@@ -52,6 +43,29 @@ eventoSchema.methods.findByID = async function(id){
     .then(result =>{return result})
     .catch(error => console.log(error))
 }
+
+eventoSchema.methods.compararFechas = async function (fecha) {
+    let fechaEvento = new Date(fecha);
+    const eventos = mongoose.model("eventos", eventoSchema);
+
+    try {
+        const result = await eventos.find();
+        for (const item of result) {
+            let fechas = new Date(item.fecha);
+            if (
+                fechas.getFullYear() === fechaEvento.getFullYear() &&
+                fechas.getMonth() === fechaEvento.getMonth() &&
+                fechas.getDate() === fechaEvento.getDate()
+            ) {
+                return true;
+            }
+        }
+        return false; 
+    } catch (error) {
+        console.error("Error en compararFechas:", error);
+        return false;
+    }
+};
 
 eventoSchema.methods.findEventAndUpdateImage = async function(fecha,genero,titulo,img){
     const eventos = mongoose.model("eventos",eventoSchema)

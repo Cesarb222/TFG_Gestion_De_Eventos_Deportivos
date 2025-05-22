@@ -1,3 +1,51 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+
+
+<style>
+    .pepe{
+        clip-path: polygon(0 0, 0 38%, 16% 51%, 0 63%, 0% 100%, 100% 100%, 100% 62%, 83% 51%, 100% 38%, 100% 0%);
+            background:linear-gradient(150deg, #232323,#232323,#333333);
+
+        border: 3px solid #ff6700;
+        height: 300px;
+        width: 300px;
+       /*  position: relative; */
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    p{
+        color: #ff6700;
+        font-size: 4rem;
+        margin: 0;
+
+    }
+    hr{
+        border: 2px dotted #ff6700;
+        width: 40rem;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+    section{
+        margin: 0 auto;
+        width: 70%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    a{
+        text-decoration: none;
+        margin-top: 25px;
+        color: #ff6700;
+    }
+</style>
+<section>
+    <div class="pepe">
+        <p class="error404-1">Error</p>
+        <hr>
+        <p class="error404-2">404</p>
+    </div>
+    <a href="/">VOLVER A INICIO</a>
+</section>

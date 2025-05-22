@@ -1,0 +1,263 @@
+.mainLogin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+body{
+    background-color: #f1f2f6;
+}
+.mainLogin h1{
+    margin: 0;
+    background: linear-gradient(135deg, #ff6700,#ff8b2c ,#ffa552);
+    text-align: center;
+    padding: 15px;
+    color: #fff;
+}
+.mainLogin section{
+    width: 40rem;
+    display: flex;
+}
+.mainLogin section div:first-child{
+    width: 70%;
+    background-color: rgb(39, 154, 255);
+}
+.mainLogin section div{
+    width: 90%;
+    /* height: 500px; */
+    margin: 0 auto;
+}
+.div2{
+    /* height: 500px; */
+    display: flex;
+    flex-direction: column;
+}
+.div2 div{
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.div2 div button{
+    padding: 8px;
+    padding: 15px 15px;
+    margin: 10px;
+    font-weight: bolder;
+    border-radius: 5px;
+    border: none;
+    background: linear-gradient(90deg, #ff6700,#ff8b2c);
+    box-shadow: 1px 1px 20px -5px #ff6700;
+    color: white;
+}
+.div2 div .registro{
+    position: relative;
+    box-shadow: none;
+    background: #dddddb;
+    color: black;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.4s ease-in;
+}
+.div2 div .registro::before{
+    content: "";
+    top: -200px;
+    left: -40%;
+    height: 150px;
+    width: 200px;
+    position: absolute;
+    background: linear-gradient(90deg, #ff6700,#ff8b2c);
+    
+    transition: top 0.5s ease-in;
+    /* clip-path: polygon(100% 50%, 0 0, 0 100%); */
+    z-index: -10;
+}
+.div2 div .registro:hover::before{
+    top: 0;
+    color: #fff;
+}
+.div2 div .registro:hover{
+    color: #fff;
+    box-shadow: 1px 1px 20px -5px #ff6700;
+
+}
+.mainLogin section div:nth-child(2) form {
+    display: grid;
+    grid-template-columns: repeat(2, 200px); 
+    gap: 2rem; 
+    margin-top: 15px;
+    padding: 0 1rem;
+    justify-items: center;
+}
+
+.mainLogin section div:nth-child(2) form input {
+    /* width: 50%; */
+    height: 2rem;
+    background-color: #dddddb;
+    border: none;
+    border-radius: 5px;
+    padding: 0 10px;
+    box-shadow: 1px 1px 20px -8px #868686;
+    transition: all 0.3s ease-in;
+}
+
+.mainLogin section div:nth-child(2) form input:focus{
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 20px -5px #ff6700;
+
+}
+.mainLogin section div:nth-child(2) form button{
+    width: 17rem;
+    background: linear-gradient(90deg, #ff6700,#ff8b2c);
+    box-shadow: 1px 1px 20px -5px #ff6700;
+    border: none;
+    padding: 15px 19px;
+    color: #fff;
+    font-weight: bolder;
+    font-size: 17px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px auto;
+    justify-content: center;
+    grid-column: 1 / -1;
+    justify-self: center;
+}
+.mainLogin section div:nth-child(2) a{
+    text-align: center;
+    display: block;
+    margin: 3px 20px;
+    text-decoration: none;
+    color: #868686;
+    font-weight: bolder;
+}
+
+.div2 .buttonGoogle {
+    justify-self: center;
+    background: white;
+    border-radius: 5px;
+    padding: 0 50px;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    cursor: pointer;
+}
+.div2 .buttonGoogle img{
+    width: 25px;
+    height: 25px;
+    object-fit: cover   ;
+}
+
+.mainLogin section div:nth-child(1):not(.logoInicio) {
+    position: relative;
+    background: linear-gradient(125deg, #070606,#653718);
+}
+.mainLogin section div:nth-child(1) .logoInicio {
+    background-color: #ff6700;
+    box-sizing: border-box;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: 50px;
+    top: 60px;
+    border-radius: 10px;
+}
+.mainLogin section div:nth-child(1) .infoLogin {
+    position: absolute;
+    color: #fff;
+    bottom: 20px;
+    right: 0;
+    font-size: 14px;
+    border-radius: 10px;
+}
+.mainLogin section div:nth-child(1) .logoInicio img{
+    width: 60px;
+    height: 60px;
+    transform: rotate(-10deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.mainLogin section div:nth-child(1) .logoInicio img:hover{
+    width: 60px;
+    height: 60px;
+    transform: rotate(-35deg);
+}
+.mainLogin .error{
+    color: red;
+    text-align: center;
+    font-weight: bolder;
+    padding: 0;
+    margin: 0;
+}
+.div2 div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+@media (max-width:650px){
+    .mainLogin section {
+        flex-direction: column;
+        width: 90%;
+    }
+    .mainLogin section div{
+    width: 90%; 
+    }
+.mainLogin section div:nth-child(1) .logoInicio  {
+        
+        background-color: transparent;
+
+    }
+    .mainLogin section div:nth-child(1):not(.logoInicio) {
+        position:static;
+        width: 90%;
+        background: linear-gradient(135deg, #ff6700,#ff8b2c ,#ffa552);
+
+}
+    .mainLogin section div:nth-child(1) .logoInicio {
+        position:static;
+        color: #fff;
+        right: 0;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+    .mainLogin section div:nth-child(1) .infoLogin {
+        position: static;
+        display: none;
+    }
+    .mainLogin section div:nth-child(1){
+        margin: 0 auto;
+    }
+    .mainLogin section div:nth-child(2) form{
+        margin: 0 auto;
+    }
+}
+
+@media (max-width:530px) {
+    .mainLogin{
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+    }
+    .mainLogin section div:nth-child(2) form{
+        grid-template-columns: 1fr;
+    }
+    .mainLogin section div:nth-child(2) form input{
+        width: 200px;
+        margin: 0 auto;
+    }
+}
+@media (max-width:360px){
+    .mainLogin section div:nth-child(2) form input{
+        width: 100%;
+    }
+    .mainLogin section div:nth-child(2) form button{
+        width: 100%;
+    }
+    .div2 .buttonGoogle {
+        padding: 0 20px;
+    }
+    .div2 div{
+        width: 100%;
+    }
+
+}

@@ -1,0 +1,189 @@
+.mainSector section:nth-child(2) {
+    width: 14rem;
+    align-content: center;
+}
+
+.mainSector {
+    display: grid;
+    grid-template-areas: "arriba arriba arriba arriba"
+        "campo campo campo detalle "
+        "campo campo campo detalle "
+        "campo campo campo detalle ";
+    /* flex-wrap: wrap; */
+    justify-content: center;
+
+    width: 70%;
+    margin: 15px auto;
+    row-gap: 30px;
+    column-gap: 40px;
+    justify-content: center;
+    align-content: center;
+}
+
+.mainSector .cabeza {
+    grid-area: arriba;
+}
+
+.mainSector section:nth-child(2) {
+    width: 500px;
+    background-color: #fff;
+    padding: 20px;
+    grid-area: campo;
+    border-radius: 15px;
+}
+
+.mainSector section:nth-child(3) div:first-child {
+    border-bottom: 2px solid #ff6700;
+}
+
+.mainSector section:nth-child(3) {
+    width: 250px;
+    padding: 20px;
+    grid-area: detalle;
+    align-content: center;
+    background-color: #fff;
+    border-radius: 15px;
+}
+
+.mainSector section div button {
+    margin: 0 auto;
+    margin-top: 15px;
+    display: flex;
+    padding: 15px;
+    font-weight: bolder;
+    border-radius: 20px;
+    border: none;
+    background: linear-gradient(90deg, #ff6700, #ff8b2c);
+    box-shadow: 1px 1px 20px -5px #ff6700;
+    color: white;
+}
+
+.mainSector section div button a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.mainSector section div {
+    background-color: #ffff;
+    margin: 0;
+    padding: 10px;
+    padding-bottom: 10px;
+}
+
+.mainSector section div p {
+    margin: 0;
+    margin-top: 2px;
+
+}
+
+.mainSector section div h1,
+.mainSector section div h2 {
+    margin: 0;
+}
+
+svg rect.naranja {
+    fill: #ff953a;
+    transition: all 0.3s ease-in-out;
+}
+
+svg rect.naranja:hover {
+    fill: #ff6701;
+}
+
+svg rect.blanco {
+    fill: #fce9d9;
+    transition: all 0.3s ease-in-out;
+}
+
+svg rect.blanco:hover {
+    fill: #d4beab;
+}
+
+@media (max-width:925px) {
+    .mainSector {
+        display: grid;
+        grid-template-areas: "arriba arriba arriba "
+            "campo campo campo  "
+            "campo campo campo  "
+            "detalle  detalle  detalle  "
+            "detalle  detalle  detalle  ";
+    }
+}
+
+@media (max-width:900px) {
+    .mainSector .cabeza {
+        margin-top: 40px;
+        margin-left: 15px;
+    }
+
+    .mainSector section:nth-child(2) {
+        width: 500px;
+        background-color: #fff;
+        padding: 20px;
+        grid-area: campo;
+        border-radius: 15px;
+    }
+
+    .mainSector section:nth-child(3) div:first-child {
+        border-bottom: 2px solid #ff6700;
+    }
+
+    .mainSector section:nth-child(3) {
+        width: 93%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width:550px) {
+    .mainSector .cabeza {
+        margin-top: 40px;
+        margin-left: 15px;
+    }
+
+    .mainSector section:nth-child(2) {
+        width: 300px;
+        margin: 0 auto;
+    }
+
+
+    .mainSector section:nth-child(3) {
+        width: 300px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width:350px) {
+    .mainSector .cabeza {
+        margin-top: 40px;
+        margin-left: 15px;
+    }
+
+    .mainSector section:nth-child(2) {
+        width: 200px;
+        margin: 0 auto;
+    }
+
+
+    .mainSector section:nth-child(3) {
+        width: 200px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width:250px) {
+    .mainSector .cabeza {
+        margin-top: 40px;
+        margin-left: 15px;
+    }
+
+    .mainSector section:nth-child(2) {
+        width: 150px;
+        margin: 0 auto;
+    }
+
+
+    .mainSector section:nth-child(3) {
+        width: 150px;
+        margin: 0 auto;
+    }
+}

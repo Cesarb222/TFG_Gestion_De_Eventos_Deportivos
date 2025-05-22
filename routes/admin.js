@@ -35,8 +35,12 @@ router.post('/nuevoEvento', upload.single('imagen') , async function(req, res, n
 
     const fechaHoy = new Date()
     const fechaEvento = new Date(req.body.fecha)
+    let fechaDisponible = await event.compararFechas(fechaEvento)
     if(fechaHoy > fechaEvento){
         req.flash("fechaEvento", "La fecha no puede ser anterior a mañana")
+        res.redirect("/admin/nuevoEvento");
+    }else if(fechaDisponible){
+        req.flash("fechaEvento2", "Esta fecha no esta disponible")
         res.redirect("/admin/nuevoEvento");
     }else{
         const evento = new eventos({
@@ -45,6 +49,8 @@ router.post('/nuevoEvento', upload.single('imagen') , async function(req, res, n
             imagen:req.file.filename,
             genero:req.body.genero,
             descripcion:req.body.descripcion,
+            precio:req.body.precio,
+            estado:true,
             lugar:"67fa83550a116aaecc4cfe81"
         })
         await evento.addEvent()

@@ -2,110 +2,63 @@
 <html lang="es">
   <head>
     <link rel="stylesheet" href="/stylesheets/style.css" />
-    <style>
-      .terreno {
-        text-align: center;
-        background-color: black;
-        color: white;
-        padding: 10px;
-        font-size: 24px;
-        margin-bottom: 20px;
-      }
+    <link rel="stylesheet" href="/stylesheets/butacas.css" />
 
-      .container-scroll {
-        overflow-x: auto;
-        overflow-y: hidden;
-        border: 1px solid #ccc;
-        background-color: white;
-        padding: 20px;
-        width: 600px;
-        margin: auto;
-      }
-
-      .container {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        min-width: 640px; /* Fija el tamaño total para que aparezca el scroll */
-      }
-
-      .fila {
-        display: flex;
-        align-items: center;
-        gap: 1px;
-        margin-right: 2px;
-        margin-bottom: 2px;
-      }
-      .fila p {
-        margin: 0;
-        margin-right: 10px;
-        margin-top: 2px;
-      }
-
-      .check {
-        width: 20px;
-        height: 20px;
-        background-color: #a9d192;
-        cursor: pointer;
-        clip-path: polygon(50% 16.95%, 100% 38.77%, 100% 100%, 0% 100%, 0% 38.77%);
-        display: flex;
-        justify-content: center;
-        align-items: end;
-        padding: 2px;
-        margin-right: 3px;
-      }
-
-      .check.seleccionada {
-        background-color: #8ca9d9 !important;
-      }
-
-      .check.reservada {
-        background-color: rgb(221, 135, 135) !important;
-        color: #fff;
-        cursor: not-allowed;
-      }
-    </style>
   </head>
   <body>
-    <div class="terreno">TERRENO DE JUEGO</div>
-    <div class="container-scroll">
-      <div class="container">
-        <% if (butacas) {
-            let ordenacion = butacas.sort((a, b) => {
-              if (a.fila === "fila10") return 1;
-              if (b.fila === "fila10") return -1;
-              if (a.fila === b.fila) return a.num_butaca - b.num_butaca;
-              return a.fila.localeCompare(b.fila);
-            });
+    <%- include('partials/header') %>
+    <main>
+      <section>
+        <div class="terreno">TERRENO DE JUEGO</div>
+        <div class="container-scroll">
+          <div class="container">
+            <% if (butacas) {
+                let ordenacion = butacas.sort((a, b) => {
+                  if (a.fila === "fila10") return 1;
+                  if (b.fila === "fila10") return -1;
+                  if (a.fila === b.fila) return a.num_butaca - b.num_butaca;
+                  return a.fila.localeCompare(b.fila);
+                });
 
-            let filaActual = '';
-            ordenacion.forEach((item) => {
-              //Si la fila es diferente a la fila actual cierro el contenedor y abro otro con su fila nueva
-              if (item.fila !== filaActual) { %>
-                  </div> 
-                <% filaActual = item.fila; %>
-                <div class="fila">
-                  <p><%= item.fila.toUpperCase() %></p>
-              <% } %>
+                let filaActual = '';
+                ordenacion.forEach((item) => {
+                  //Si la fila es diferente a la fila actual cierro el contenedor y abro otro con su fila nueva
+                  if (item.fila !== filaActual) { %>
+                      </div> 
+                    <% filaActual = item.fila; %>
+                    <div class="fila">
+                      <p><%= item.fila.toUpperCase() %></p>
+                  <% } %>
 
-              <%
-              //Aqui compruebo si las butacas estan reservadas y la guardo en una variable para aplicarle su clase
-                let reserva = ""
-                if(ocupadas.includes(item._id.toString())){
-                  reserva = "reservada"
-                } %>
-              <div
-                class="check <%= reserva %>" data-valueButaca="<%= item.fila + ',' + item.num_butaca + ',' + item.sector + "," + idEvento %>"
-              ><span><%= item.num_butaca %></span></div>
-        <% }); %>
-        </div> 
-        <% } %>
-      </div>
-    </div>
-
-    <form action="/paypal/pay" method="POST" id="infoSeleccionadas">
+                  <%
+                  //Aqui compruebo si las butacas estan reservadas y la guardo en una variable para aplicarle su clase
+                    let reserva = ""
+                    if(ocupadas.includes(item._id.toString())){
+                      reserva = "reservada"
+                    } %>
+                  <div
+                    class="check <%= reserva %>" data-valueButaca="<%= item.fila + ',' + item.num_butaca + ',' + item.sector + "," + idEvento %>"
+                  ><span><%= item.num_butaca %></span></div>
+            <% }); %>
+            </div> 
+            <% } %>
+          </div>
+          </div>
+      </section>
+      
+      <section class="lugar">
+        <h1>ELIGE TUS ASIENTOS PARA <strong><%=nombreEvento%></strong></h1>
+        <p>Si lo deseas, también puedes escoger varios asientos a la vez</p>
+        
+        <p>ZONA SELECCIONADA:</p>
+        <h2><strong><%=nombreSector%> <%=zonaNombre%></strong></h2>
+        <form action="/paypal/pay" method="POST" id="infoSeleccionadas">
     
-    </form>
+      </form>
+      </section>
+    </main>
+    <%- include('partials/footer') %>
+    
     <script src="/javascripts/butacas.js"></script>
   </body>
 </html>

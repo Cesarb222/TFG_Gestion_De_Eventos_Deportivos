@@ -2,7 +2,8 @@ var express = require('express');
 var router = express.Router();
 const butaca = require('../models/butaca');
 const entrada = require('../models/entrada');
-const sector = require('../models/sector');
+const sector = require('../models/sector')
+const eventos = require('../models/eventos');
 
 var router = express.Router();
 
@@ -35,6 +36,15 @@ router.get('/seleccion/:Sector/:idEvento', async (req, res, next) => {
 const { Sector, idEvento } = req.params
 const sec = new sector()
 const idSector = await sec.findByNameSector(Sector)
+let nombreSector = idSector.num_sector.split("r")
+nombreSector = nombreSector[0]+"r "+nombreSector[1]
+
+const zonaNombre = idSector.zona
+
+let evento = new eventos()
+evento = await evento.findByID(idEvento)
+const nombreEvento = evento.titulo
+console.log(evento)
 const but = new butaca()
 const ent = new entrada()
 const butacas = await but.findButacasSector(idSector)
@@ -43,7 +53,10 @@ const ocupadas = entrad.map(item => item.butaca.toString());
     res.render('butacas',{
         butacas,
         ocupadas,
-        idEvento
+        idEvento,
+        nombreSector,
+        zonaNombre,
+        nombreEvento
     });
 });
 

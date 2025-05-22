@@ -29,7 +29,7 @@
           
           
         <div class="cartas">
-          <% for (let i = 1; i < eventos.length && i < 4; i++) { 
+          <% for (let i = 1; i < eventos.length && i < 5; i++) {
               let fecha = new Date(eventos[i].fecha)
               let mes = fecha.getMonth()+1
               let dia = fecha.getDate()
@@ -45,11 +45,9 @@
               <article class="arriba" style="background-image: url('/images/imagenesEventos/<%= eventos[i].imagen %>') ;">
                 
               </article>
-              
               <article class="abajo">
-                <p><%= eventos[i].titulo %></p>
-                <hr>
-                <p><%=`${dia} ${meses[mes]} ${año}, ${hora}:${min}`%></p>
+                <p><strong><%= eventos[i].titulo %></strong></p>
+                <p> 📅 <%=`${dia} ${meses[mes]} ${año}, ${hora}:${min}`%></p>
                 <button><a href="/sector/<%= eventos[i]._id.toString() %>">Ver evento</a></button>
               </article>
               

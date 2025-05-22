@@ -13,7 +13,8 @@ var adminRouter = require('./routes/admin');
 var usersRouter = require('./routes/users');
 const butacaRouter = require("./routes/butaca.js");
 const sectorRouter = require("./routes/sector.js");
-const paypalRouter = require("./routes/paypal.js")
+const paypalRouter = require("./routes/paypal.js");
+const eventosRouter = require("./routes/eventos.js");
 
 const usuarios = require('./models/usuarios.js');
 const estadio = require('./models/estadio.js');
@@ -56,6 +57,7 @@ app.use((req, res, next) => {
   app.locals.ErrorEmailRepetido = req.flash('ErrorEmailRepetido');
   app.locals.contraseñasNoCoincide = req.flash('contraseñasNoCoincide');
   app.locals.fechaEvento = req.flash("fechaEvento")
+  app.locals.fechaEvento2 = req.flash("fechaEvento2")
   app.locals.user = req.user;
   next();
 });
@@ -66,7 +68,9 @@ app.use('/admin', adminRouter);
 app.use('/users', usersRouter);
 app.use('/butaca', butacaRouter);
 app.use('/sector', sectorRouter);
-app.use('/paypal',paypalRouter)
+app.use('/paypal',paypalRouter);
+app.use('/eventos',eventosRouter);
+
 
 
 

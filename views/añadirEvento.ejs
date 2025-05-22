@@ -3,28 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="shortcut icon" href="/images/logoTFG.webp" type="image/x-icon">
     <title>Document</title>
 </head>
 <body>
+    <%- include('partials/header') %>
+    <main class="mainAñadirEvento">
+    <h1>Crear Nuevo Evento Deportivo</h1>
+    <hr>
     <%if(fechaEvento){%>
         <p><%=fechaEvento%></p>
     <%}%>
+    <%if(fechaEvento2){%>
+        <p><%=fechaEvento2%></p>
+    <%}%>
     <form action="/admin/nuevoEvento" enctype="multipart/form-data" method="POST">
-        <input type="text" name="titulo" required>
-        <input type="datetime-local" name="fecha" required>
-        <input type="file" name="imagen" required>
-        <input type="text" name="genero" required>
-        <input type="text" name="descripcion" required>
+        
+
+        <div>
+            <label for="titulo">Título del Evento
+                <input type="text" name="titulo" id="titulo" placeholder="Ej: Final Copa del Rey 2025" required>
+            </label>
+            
+            <label for="fecha">Fecha y Hora
+                <input type="datetime-local" name="fecha" id="fecha" required>
+            </label>
+            
+            
+        </div>
+        <div>
+            <label for="imagen" class="imagenLabel">Imagen del Evento
+                <input type="file" name="imagen" id="imagen" required>
+            </label>
+            
+            <label for="genero" >Tipo
+                <select name="genero" id="genero">
+                <option value="" selected disabled>Seleccionar un tipo</option>
+                <option value="futbol">Futbol</option>
+                <option value="rugby">Rugby</option>
+                <option value="otro">otro</option>
+            </select>
+            </label>
+            
+
+           
+            
+        
+        </div>
+        
+        <div>
+            <label for="precio">Precio Base
+                    <input type="number" placeholder="Ej: 25"  required name="precio">
+            </label>
+            <label for="descripcion">Descripción
+                <textarea type="text" name="descripcion" placeholder="Proporciona detalles sobre el evento..." required></textarea>
+            </label>
+        
+        </div>
+         
+
+        
         <button type="submit">Crear Evento</button>
     </form>
-
-    <!-- <form action="/admin/nuevoEvento" method="POST">
-        <input type="text" name="titulo" required>
-        <input type="datetime-local" name="fecha" required>
-        <input type="file" name="imagen" required>
-        <input type="text" name="genero" required>
-        <input type="text" name="descripcion" required>
-        <button type="submit">Crear Evento</button>
-    </form> -->
+    </main>
+    
+    <%- include('partials/footer') %>
 </body>
 </html>

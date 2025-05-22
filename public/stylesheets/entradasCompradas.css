@@ -1,0 +1,109 @@
+.mainEntradasCompradas{
+    width: 70%;
+    margin: 0 auto;
+}
+
+.mainEntradasCompradas section article{
+    width: 75%;
+    display: flex;
+    /* flex-wrap: wrap; */
+    gap: 15px;
+    margin: 0 auto;
+     margin-bottom: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    
+}
+.mainEntradasCompradas section {
+    display: flex;
+    flex-direction: column;
+}
+.mainEntradasCompradas section article .izq{
+    width: 250px;
+    background-size: cover;
+    object-fit: cover;
+    background-position: center;
+    background-color: #fff;
+    border-radius: 10px;
+    border-right:0px ;
+}
+.mainEntradasCompradas section article .medio{
+    width: 30rem;
+    text-transform: uppercase;
+    
+    
+}
+.mainEntradasCompradas section article .der{
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+}
+.mainEntradasCompradas section .botones{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.mainEntradasCompradas h1{
+    text-align: center;
+    margin-bottom: 5px;
+}
+.mainEntradasCompradas hr{
+    width: 50%;
+    border-color: #ff6700;
+    outline: none;
+    border-width: 3px;
+    border-top: none;
+    border-left: none;
+    margin-bottom: 15px;
+}
+.mainEntradasCompradas section article .der :nth-child(1){
+    border-radius: 10px;
+    filter: blur(5px);
+    cursor: pointer;
+    transition: filter 0.2s ease-in-out;
+}
+
+.continuar{
+    position: relative;
+    z-index: 100;
+    cursor: pointer;
+    width: 20%;
+    padding: 10px 0;
+    border: transparent;
+    border-radius: 20px;
+    overflow: hidden;
+    background: linear-gradient(90deg, #ff6700,#ff8b2c);
+    transition: margin-bottom 0.1s ease-in-out;
+    box-shadow: 1px 1px 20px -5px #ff6700;
+    margin: 0 auto;
+}
+
+
+.continuar::before {
+    content: "";
+    position: absolute;
+    clip-path: circle(50% at 50% 50%);
+    top: 0;
+    left: -50px;
+    height: 100%;
+    width: 0;
+    background-color: light-dark(#1c3e4e, #292929);
+    padding: 20px;
+    z-index: -1;
+    transition: all 0.5s ease-in-out;
+}
+
+
+.continuar:hover::before {
+    width: 300%;
+    margin-left: -100px;
+}
+
+.continuar a {
+    transition: color 0.3s ease-in;
+    text-decoration: none;
+    color: #fff;
+}
+.continuar:hover a {
+    color: #fff;
+}

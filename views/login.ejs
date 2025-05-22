@@ -3,25 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
     <title>Document</title>
 </head>
 <body>
-    <% if(ErrorRegistro){ %>
-        <p><%=ErrorRegistro%></p>
-   <% }%>
-   <% if(ErrorEmailRepetido){ %>
-    <p><%=ErrorEmailRepetido%></p>
-<% }%>
-<% if(contraseñasNoCoincide){ %>
-    <p><%=contraseñasNoCoincide%></p>
-<% }%>
+    
 
 
-    <form action="/users/signin" method="post">
-        <input type="email" name="email" placeholder="insertaTuEmail">
-        <input type="password" name="password" placeholder="inserta tu contraseña">
-        <button type="submit">Registrate</button>
-    </form>
-    <a class="button google" href="/users/auth/google">Sign in with Google</a>
+    <main class="mainLogin">
+        <section>
+            <div> 
+                <div class="logoInicio">
+                    <a href="/"><img src="/images/logoTFG.webp" alt="Logo TFG"></a>
+                </div>
+                <div class="infoLogin">
+                    <h2>ÚNETE A LA COMUNIDAD</h2>
+                    <p>Compra entradas para los mejores eventos deportivos</p>
+                </div>
+            </div>
+            <div class="div2">
+                    <h1>ACCESO DE USUARIOS</h1>
+
+                    <div>
+                        <button>INICIAR SESIÓN</button>
+                        <button class="registro">REGISTRARSE</button>
+                    </div>
+                    <% if (ErrorRegistro || ErrorEmailRepetido || contraseñasNoCoincide) { %>
+                        <p class="error">
+                            <%= ErrorRegistro ? ErrorRegistro : '' %>
+                            <%= ErrorEmailRepetido ? ErrorEmailRepetido : '' %>
+                            <%= contraseñasNoCoincide ? contraseñasNoCoincide : '' %>
+                        </p>
+                    <% } %>
+                    <form action="/users/signin" method="post">
+                        <input type="email" name="email" placeholder="Email">
+                        <input type="password" name="password" placeholder="Contraseña">
+                        <button type="submit">INICIAR SESIÓN</button>
+                    </form>
+                    <a href="">¿Olvidaste su contraseña?</a>
+                    <button class="buttonGoogle"><a class="buttonGoogle" href="/users/auth/google">
+                        <img src="/images/google-logo.png" alt="Logo de google">
+                    </a></button>
+            </div>
+        </section>
+        
+        
+    </main>
 </body>
 </html>

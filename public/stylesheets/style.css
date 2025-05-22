@@ -1,6 +1,11 @@
 @import url("./index.css");
 @import url("./header.css");
 @import url("./footer.css");
+@import url("./login.css");
+@import url("./sector.css");
+@import url("./entradasCompradas.css");
+@import url("./eventos.css");
+@import url("./añadirEvento.css");
 :root{
   --body-light:#f1f2f6;
 }

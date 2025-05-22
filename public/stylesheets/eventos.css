@@ -1,0 +1,30 @@
+.mainEventos{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+.mainEventos .busqueda{
+    text-align: center;
+    text-transform: uppercase;
+}
+.mainEventos .containerEventos{
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.mainEventos .containerEventos .abajo hr{
+    width: 500px;
+    margin-bottom: 15px;
+    border: none;
+    border-bottom: 3px solid #ff6700;
+    outline: none;
+    background-color: #ff6700;
+}
+
+@media (max-width:900px){
+    .mainEventos .busqueda{
+        margin-top: 110px;
+    }
+}

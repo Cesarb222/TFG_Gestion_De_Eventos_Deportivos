@@ -5,7 +5,8 @@ const sectorSchema = new Schema({
     num_sector: { type: String, required: true },
     zona: { type: String, required: true },
     capacidad: { type: Number, required: true },
-    estadio: { type: mongoose.Schema.Types.ObjectId, ref: 'estadio', required: true }
+    estadio: { type: mongoose.Schema.Types.ObjectId, ref: 'estadio', required: true },
+    multiplicador:{type:Number}
 });
 
 sectorSchema.methods.findByNameSector = async function (nombre) {
@@ -22,6 +23,11 @@ sectorSchema.methods.findByZonaSector = async function (id) {
     return sector;
 }
 
+sectorSchema.methods.findAll = async function (id) {
+    const sectores = mongoose.model("sector",sectorSchema)
+    const sector = await sectores.find()
+    return sector;
+}
 
 sectorSchema.methods.addSector = async function (){
     await this.save()

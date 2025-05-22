@@ -4,28 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+        <link rel='stylesheet' href='/stylesheets/singup.css' />
 </head>
 <body>
-    <% if(ErrorRegistro){ %>
-        <p><%=ErrorRegistro%></p>
-   <% }%>
-   <% if(ErrorEmailRepetido){ %>
-    <p><%=ErrorEmailRepetido%></p>
-<% }%>
-<% if(contraseñasNoCoincide){ %>
-    <p><%=contraseñasNoCoincide%></p>
-<% }%>
+    <main class="mainLogin">
+        <section>
+            <div> 
+                <div class="logoInicio">
+                    <a href="/"><img src="/images/logoTFG.webp" alt="Logo TFG"></a>
+                </div>
+                <div class="infoLogin">
+                    <h2>ÚNETE A LA COMUNIDAD</h2>
+                    <p>Compra entradas para los mejores eventos deportivos</p>
+                </div>
+            </div>
+            <div class="div2">
+                    <h1>ACCESO DE USUARIOS</h1>
 
-    <form action="/users/signup" method="post">
-        <input type="text" name="nombre" placeholder="nombre">
-        <input type="text" name="apellido" placeholder="apellido">
-        <input type="email" name="email" placeholder="insertaTuEmail">
-        <input type="password" name="password" placeholder="inserta tu contraseña">
-        <input type="password" name="confirmarPassword" placeholder="confirmar tu contraseña">
-        <input type="date" name="fechaNacimiento">
-        <button type="submit">Registrate</button>
-    </form>
-    <a class="button google" href="/users/auth/google">Sign in with Google</a>
-    <a href="/users/logout">Salir</a>
+                    <div>
+                        <button class="registro">INICIAR SESIÓN</button>
+                        <button >REGISTRARSE</button>
+                    </div>
+                    <% if (ErrorRegistro || ErrorEmailRepetido || contraseñasNoCoincide) { %>
+                        <p class="error">
+                            <%= ErrorRegistro ? ErrorRegistro : '' %>
+                            <%= ErrorEmailRepetido ? ErrorEmailRepetido : '' %>
+                            <%= contraseñasNoCoincide ? contraseñasNoCoincide : '' %>
+                        </p>
+                    <% } %>
+                    <form action="/users/signup" method="post">
+                        <input type="text" name="nombre" placeholder="nombre">
+                        <input type="text" name="apellido" placeholder="apellido">
+                        <input type="email" name="email" placeholder="insertaTuEmail">
+                        <input type="password" name="password" placeholder="inserta tu contraseña">
+                        <input type="password" name="confirmarPassword" placeholder="confirmar tu contraseña">
+                        <input type="date" name="fechaNacimiento">
+                        <button type="submit">Registrate</button>
+                    </form>
+                    <button class="buttonGoogle"><a class="buttonGoogle" href="/users/auth/google">
+                        <img src="/images/google-logo.png" alt="Logo de google">
+                    </a></button>
+            </div>
+        </section>
+        
+        
+    </main>
 </body>
 </html>

@@ -14,10 +14,18 @@ entradaSchema.methods.findByEvent= async function (idEvento) {
             evento:idEvento
         })
 }
+entradaSchema.methods.findById= async function (id){
+    const entrada = mongoose.model("entrada",entradaSchema)
+    return await entrada.findById(id)
+}
 
 entradaSchema.methods.addEntrada = async function (){
-    await this.save()
-    .then(result => console.log(result))
-    .catch(error => console.log(error));
+    try {
+        const result = await this.save();
+        console.log(result);
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
 };
 module.exports = mongoose.model('entrada', entradaSchema);
