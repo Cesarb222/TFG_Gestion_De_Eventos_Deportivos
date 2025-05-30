@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Contraseña</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/recuperarContraseña.css' />
+    <link rel="shortcut icon" href="/images/logoTFG.webp" type="image/x-icon">
+</head>
+
+<body>
+    <main class="mainRecuperar">
+        <section>
+            <img src="/images/logoTFG.webp" alt="">
+        </section>
+        <h1>RECUPERAR CONTRASEÑA</h1>
+        <hr>
+        <%if(cuentaGoogle){%>
+            <p class="error"><%=cuentaGoogle%></p>
+        <%}%>
+        <%if(recuperarEmail){%>
+            <p class="error"><%=recuperarEmail%></p>
+        <%}%>
+        <form action="/users/nuevaContrasena" method="POST" id="recuperar">
+            <input type="hidden" name="email" value="<%= email %>" readonly >
+            <input type="hidden" name="token" value="<%= token %>">
+            <input type="password" name="password" required placeholder="Nueva contraseña">
+            <input type="password" name="rpassword" required placeholder="Repetir Nueva contraseña">
+            
+            <div>
+                <button type="submit">ACEPTAR</button>
+            </div>
+        </form>
+    </main>
+    
+</body>
+
+</html>

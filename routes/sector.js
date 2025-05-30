@@ -7,7 +7,7 @@ const sector = require("../models/sector")
 
 
 /* GET users listing. */
-router.get('/:idEvento', async function(req, res, next) {
+router.get('/:idEvento',isAuthenticated, async function(req, res, next) {
     req.session.infoEntrada = []
     console.log("info entradas",req.session.infoEntrada)
     const {idEvento} = req.params
@@ -27,7 +27,6 @@ router.get('/:idEvento', async function(req, res, next) {
     let fondo = sectores.find(item=> item.zona == "fondo")
 
     let arrayMultiplicador = [grada.multiplicador,tribuna.multiplicador,fondo.multiplicador]
-    console.log(evento.precio)
     res.render("sector",{
         idEvento,
         evento,
@@ -41,6 +40,6 @@ function isAuthenticated(req, res, next) {
         return next();
     }
 
-    res.redirect('/')
+    res.redirect('/users/signin')
 }
 module.exports = router;

@@ -48,6 +48,9 @@ passport.use("local-signup", new LocalStrategy({
     let dia = fechaHoy.getDate() - fechaUsuario.getDate();
 
     //Para saber si es mayor de 16 años y pueda realizar compras
+    //Se verifican que las contraseñas son iguales y que el usuario no exista
+    //si falla algo nos hace el callback y nos muestra el mensaje temporal del
+    //middleware del req.flash
     if (edad > 16 || (edad === 16 && (mes > 0 || (mes === 0 && dia >= 0)))) {
         const user = new usuarios()
         if(confirmarPassword == password){
@@ -80,18 +83,27 @@ passport.use("local-signup", new LocalStrategy({
 
 }));
 
+//Para el login
 passport.use('local-signin', new LocalStrategy({
     usernameField: "email",
     passwordField: "password",
     passReqToCallback: true
 }, async (req, email, password, done) => {
-    var user = new usuarios();
-        user = await user.findByEmail(email);
-    if(!user) {
+    let user = new usuarios()
+    user = await user.findByEmail(email);
+
+    if (!user) {
         return done(null, false, req.flash('ErrorEmailRepetido', 'No hay registrado este correo'));
     }
-    if(!user.compararContraseña(password)) {
+
+    if (user.googleID) {
+        return done(null, false, req.flash('google', 'Este correo está registrado con Google'));
+    }
+
+    const contraseñaValida = await user.compararContraseña(password);
+    if (!contraseñaValida) {
         return done(null, false, req.flash('contraseñasNoCoincide', 'Contraseña incorrecta'));
     }
+
     return done(null, user);
 }));

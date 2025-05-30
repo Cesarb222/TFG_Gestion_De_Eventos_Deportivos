@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=evento.titulo%></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="shortcut icon" href="/images/logoTFG.webp" type="image/x-icon">
+</head>
+<body>
+    <%-include("partials/header.ejs")%>
+    <main class="mainEvento">
+        <div class="titulo">
+            <strong><h1><%=evento.titulo%></h1></strong>
+        </div>
+        <div class="infoEvento">
+            <img src="/images/imagenesEventos/<%= evento.imagen %>" alt="imagen del evento <%=evento.titulo%>">
+            <p><strong><%= evento.titulo %></strong></p>
+            <% 
+                const meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];  
+                let fecha = new Date(evento.fecha)
+                let mes = fecha.getMonth()
+                let dia = fecha.getDate()
+                let año = fecha.getFullYear()
+                let hora = fecha.getHours()
+                let min = String(fecha.getMinutes()).padStart(2, "0");%>
+            <p> 📅 <%=`${dia} ${meses[mes]} ${año}, ${hora}:${min}`%></p>
+            <p>Entradas desde: <%=evento.precio%> €</p>
+            <button><a href="/sector/<%=evento._id%>">COMPRAR ENTRADAS</a></button>
+        </div>
+        <div class="descripcionEvento">
+            <h1>Sobre el evento</h1>
+            <hr>
+            <div>
+                <p><%=evento.descripcion%></p>
+            </div>
+        </div>
+    </main>
+    <div style="background-image: url('');" class="imagenFondo"></div>
+    <%-include("partials/footer.ejs")%>
+</body>
+</html>

@@ -20,8 +20,40 @@ eventoSchema.methods.findAll = async function () {
     .catch(error => console.log(error))
 }
 
+//PAra buscar los eventos con dicho genero
+eventoSchema.methods.findGenero = async function (genero) {
+    const eventos = mongoose.model("eventos",eventoSchema)
+    return await eventos.find({estado:true,genero:genero})
+    .then(result =>{return result})
+    .catch(error => console.log(error))
+}
+
+eventoSchema.methods.eventosDisponibles = async function () {
+    const eventos = mongoose.model("eventos",eventoSchema)
+    return await eventos.find({estado:true})
+    .then(result =>{return result})
+    .catch(error => console.log(error))
+}
+//para actualizar el estado del evento
+eventoSchema.methods.updateEstado= async function(id,estadoEvento){
+    const eventos = mongoose.model("eventos",eventoSchema)
+    //Con new: true, nos devolvera el nuevo resultadoo tras actualizarlo
+    return await eventos.findByIdAndUpdate(id,{estado:estadoEvento},{new: true})
+    .then(result =>{return result})
+    .catch(error => console.log(error))
+}
+//para actualizar la fecha del evento
+eventoSchema.methods.updateFecha= async function(id,FechaEvento){
+    const eventos = mongoose.model("eventos",eventoSchema)
+    return await eventos.findByIdAndUpdate(id,{fecha:FechaEvento},{new: true})
+    .then(result =>{return result})
+    .catch(error => console.log(error))
+}
+
+//Para hacer el buscador delk header, utilizo el objeto RegExp para la busqueda
 eventoSchema.methods.buscadorHeader = async function (palabra) {
     const eventos = mongoose.model("eventos",eventoSchema)
+    //la i significa para encontrar busquedas que no le de importancia a las mayusculas o minusculas
     const regex = new RegExp(palabra,"i")
     return await eventos.find({titulo:regex})
     .then(result =>{return result})
@@ -44,12 +76,17 @@ eventoSchema.methods.findByID = async function(id){
     .catch(error => console.log(error))
 }
 
+//Metodo para comparar la fechas con otros eventos
 eventoSchema.methods.compararFechas = async function (fecha) {
     let fechaEvento = new Date(fecha);
     const eventos = mongoose.model("eventos", eventoSchema);
 
     try {
-        const result = await eventos.find();
+        //busco los eventos que estan activos  y lo comparo si coincide alguna
+        //fecha con retorna true lo que nos indica que hay un evento esa fehca,
+        //si no retorbna false con lo que nos indica que hay un evento en esa fecha
+        const result = await eventos.find({estado:true});
+        console.log("aaa",result)
         for (const item of result) {
             let fechas = new Date(item.fecha);
             if (

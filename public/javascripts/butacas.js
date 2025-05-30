@@ -13,7 +13,6 @@ butacas.forEach(item => {
             item.classList.remove("seleccionada");
         } else {
             if (maxButacas.length >= 3) {
-                alert("No puedes guardar más de 3 butacas");
                 return;
             }
             item.classList.add("seleccionada");
@@ -30,6 +29,8 @@ function infoButaca(){
         /* console.log(item.dataset.valuebutaca) */
         let datosSplit = item.dataset.valuebutaca.split(",")
         console.log(datosSplit)
+        //Los atributos se guardan en como arrays de names para ver si solo tiene
+        //una o mas entradas para adquirir y se envia la informacion por post 
         infoContenedor.innerHTML+=
         ` 
         <div class="butSeleccion">

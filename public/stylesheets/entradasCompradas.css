@@ -1,53 +1,60 @@
-.mainEntradasCompradas{
+.mainEntradasCompradas {
     width: 70%;
     margin: 0 auto;
 }
 
-.mainEntradasCompradas section article{
+.mainEntradasCompradas section article {
     width: 75%;
     display: flex;
     /* flex-wrap: wrap; */
     gap: 15px;
     margin: 0 auto;
-     margin-bottom: 15px;
+    margin-bottom: 15px;
     background-color: #fff;
     border-radius: 10px;
-    
+
 }
+
 .mainEntradasCompradas section {
     display: flex;
     flex-direction: column;
 }
-.mainEntradasCompradas section article .izq{
+
+.mainEntradasCompradas section article .izq {
     width: 250px;
     background-size: cover;
     object-fit: cover;
     background-position: center;
     background-color: #fff;
     border-radius: 10px;
-    border-right:0px ;
+    border-right: 0px;
 }
-.mainEntradasCompradas section article .medio{
+
+.mainEntradasCompradas section article .medio {
     width: 30rem;
     text-transform: uppercase;
-    
-    
+
+
 }
-.mainEntradasCompradas section article .der{
+
+.mainEntradasCompradas section article .der {
     border-radius: 10px;
     position: relative;
     display: flex;
 }
-.mainEntradasCompradas section .botones{
+
+.mainEntradasCompradas section .botones {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-.mainEntradasCompradas h1{
+
+.mainEntradasCompradas h1 {
     text-align: center;
     margin-bottom: 5px;
 }
-.mainEntradasCompradas hr{
+
+.mainEntradasCompradas hr {
     width: 50%;
     border-color: #ff6700;
     outline: none;
@@ -56,14 +63,15 @@
     border-left: none;
     margin-bottom: 15px;
 }
-.mainEntradasCompradas section article .der :nth-child(1){
+
+.mainEntradasCompradas section article .der :nth-child(1) {
     border-radius: 10px;
     filter: blur(5px);
     cursor: pointer;
     transition: filter 0.2s ease-in-out;
 }
 
-.continuar{
+.continuar {
     position: relative;
     z-index: 100;
     cursor: pointer;
@@ -72,7 +80,7 @@
     border: transparent;
     border-radius: 20px;
     overflow: hidden;
-    background: linear-gradient(90deg, #ff6700,#ff8b2c);
+    background: linear-gradient(90deg, #ff6700, #ff8b2c);
     transition: margin-bottom 0.1s ease-in-out;
     box-shadow: 1px 1px 20px -5px #ff6700;
     margin: 0 auto;
@@ -104,6 +112,103 @@
     text-decoration: none;
     color: #fff;
 }
+
 .continuar:hover a {
     color: #fff;
+}
+
+@media (max-width: 1200px) and (min-width: 901px) {
+    .mainEntradasCompradas section article {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 95%;
+        padding: 10px;
+    }
+
+    .mainEntradasCompradas section article .izq {
+        width: 200px;
+        height: 230px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 10px;
+        flex-shrink: 0;
+    }
+
+    .mainEntradasCompradas section article .medio {
+        width: 22rem;
+        font-size: 0.9rem;
+    }
+
+    .mainEntradasCompradas section article .der {
+        width: 160px;
+        justify-content: center;
+    }
+
+    .mainEntradasCompradas section article .der img {
+        width: 100%;
+        max-width: 160px;
+    }
+}
+
+@media (max-width:900px) {
+    .mainEntradasCompradas section article {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .mainEntradasCompradas section article .izq {
+        width: 60%;
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .mainEntradasCompradas section article .medio {
+        width: 100%;
+        text-align: center;
+    }
+
+    .mainEntradasCompradas section article .der {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .mainEntradasCompradas section article .der img {
+        width: 200px;
+    }
+
+    .mainEntradasCompradas section .botones {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .continuar {
+        width: 90%;
+    }
+}
+
+@media (max-width: 500px) {
+    .mainEntradasCompradas h1 {
+        font-size: 1.2rem;
+    }
+.mainEntradasCompradas section article .izq {
+        width: 100%;
+        height: 200px;
+        background-size: cover;
+        background-position: center;
+    }
+    .mainEntradasCompradas hr {
+        width: 80%;
+    }
+
+    .mainEntradasCompradas section article .medio {
+        font-size: 0.9rem;
+    }
+
+    .mainEntradasCompradas section article .der img {
+        width: 150px;
+    }
 }

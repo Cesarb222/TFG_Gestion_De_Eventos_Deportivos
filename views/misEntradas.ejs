@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tus Entradas</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Mis entradas</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="shortcut icon" href="/images/logoTFG.webp" type="image/x-icon">
 </head>
 <body>
-    <%- include('partials/header') %>
+    <%- include("partials/header")%>
     <main class="mainEntradasCompradas">
-        <h1>Tus entradas para <%= arrayEntrada[0].nombre_evento%></h1>
+        <h1>Tus entradas para</h1>
         <hr>
         <section>
             <%
@@ -34,24 +34,23 @@
                         %>
                         <p><strong>FECHA: </strong><%=` ${dia} ${meses[mes]} ${año} ${hora}:${min}`%></p>
 
+                        <%if(item.eventoEstado == true){%>
+                            <p><strong>ESTADO: </strong> ACTIVO</p>
+                        <%}else{%>
+                            <p><strong>ESTADO: </strong> CANCELADO</p> 
+                        <%}%>
                     </div>
                     <div class="der">
-                        
-                        <img src="<%=item.cod_qr%>" alt="imagen del codigo qr de la entrada" id="qr">
+                        <img src="<%=item.cod_qr%>" alt="imagen del codigo qr de la entrada" id="qr" class="qrMisEntradas">
                     </div>
                 </article>
             <%})
             %>
-            <div class="botones">
-                <button class="continuar"><a href="/">VOLVER AL INICIO</a></button>
-                <button class="continuar"><a href="/eventos/pdf/<%=idEntrada%>">DESCARGAR PDF</a></button>
-            </div>
             
         </section>
         
     </main>
-    <%- include('partials/footer') %>
+    <%- include("partials/footer")%>
     <script src="/javascripts/qr.js"></script>
-    
 </body>
 </html>

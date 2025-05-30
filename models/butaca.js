@@ -7,6 +7,7 @@ const butacaSchema = new Schema({
     sector: { type: mongoose.Schema.Types.ObjectId, ref: 'sector', required: true }
 });
 
+//Para buscar las butacas por el sector
 butacaSchema.methods.findButacasSector = async function (IDsector) {
         const butaca = mongoose.model("butaca",butacaSchema)
         return await butaca.find({
@@ -14,6 +15,7 @@ butacaSchema.methods.findButacasSector = async function (IDsector) {
         }).then(result => {return result})
         .catch(error => console.log(error));
 }
+//Para buscar la butaca
 butacaSchema.methods.findButaca = async function (IDsector,fila,numButaca) {
     const butaca = mongoose.model("butaca",butacaSchema)
     return await butaca.find({

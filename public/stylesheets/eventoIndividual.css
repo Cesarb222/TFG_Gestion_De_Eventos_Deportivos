@@ -1,0 +1,132 @@
+.mainEvento .infoEvento img {
+    /* width: 300px;
+    height: 300px; */
+    height: 300px;
+    filter: grayscale(90%) contrast(100%);
+    object-fit: cover;
+    aspect-ratio: 3/3.5;
+    border-radius: 10px;
+    transition: filter 0.3s ease-in-out;
+}
+.mainEvento .infoEvento:hover img {
+    filter: grayscale(0%) contrast(100%);
+}
+.mainEvento{
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    column-gap: 40px;
+    grid-template-areas: 
+    "titulo titulo titulo titulo titulo"
+    "info info desc desc desc";
+    justify-content: center;
+}
+.mainEvento .infoEvento{
+    margin-top: 40px;
+    background-color: #fff;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    grid-area: info;
+    border-radius: 10px;
+}
+.mainEvento .infoEvento p,
+.mainEvento .infoEvento button{
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+.mainEvento .infoEvento button{
+    margin-left:20px ;
+    align-self: center;
+    background: linear-gradient(90deg, #ff6700,#ff8b2c);
+    box-shadow: 1px 1px 20px -5px #ff6700;
+    border: navajowhite;
+    padding: 15px 19px;
+    color: #fff;
+    font-weight: bolder;
+    font-size: 17px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.mainEvento .infoEvento button a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.descripcionEvento{
+    grid-area: desc;
+    margin-top: 40px;
+    background-color: #fff;
+    padding: 5px 15px ;
+    border-radius: 10px;
+}
+.descripcionEvento div p{
+    margin-top: 30px;
+    font-size: 17px;
+}
+.descripcionEvento h1{
+    margin-bottom: 0;
+}
+.descripcionEvento hr{
+    border-color: #ff6700;
+    border: none;
+    margin-top: 3px;
+    border-bottom: 3px solid #ff6700;
+}
+.mainEvento .titulo{
+    grid-area: titulo;
+    margin: 0 auto;
+    margin-top: 40px;
+    background: linear-gradient(90deg, #ff6700,#ff8b2c);
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+@media (max-width:1340px){
+    .descripcionEvento div p{
+    margin-top: 30px;
+    font-size: auto;
+}
+}
+
+@media (max-width:1250px){
+    .descripcionEvento div p{
+    margin-top: 30px;
+    font-size: auto;
+}
+    .mainEvento .infoEvento{
+        height: 540px;
+    }
+}
+
+@media (max-width:900px){
+    .descripcionEvento div p{
+    margin-top: 30px;
+    font-size: auto;
+}
+    .mainEvento .infoEvento{
+        width: 100%;
+        height: 540px;
+    }
+    .mainEvento{
+        grid-template-areas: 
+    "titulo titulo titulo titulo titulo"
+    "info info info info info "
+    "desc desc desc desc desc ";
+    }
+    .mainEvento .titulo{
+        margin-top: 80px;
+        
+    }
+}
+
+@media (max-width:350px){
+    .mainEvento .infoEvento button{
+        width: 150px;
+    }
+}

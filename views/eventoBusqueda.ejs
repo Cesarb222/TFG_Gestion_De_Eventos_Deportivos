@@ -5,7 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
-    <title>Document</title>
+    <link rel="shortcut icon" href="/images/logoTFG.webp" type="image/x-icon">
+    <title>Busqueda Eventos</title>
 </head>
 
 <body>
@@ -21,7 +22,7 @@
                     const meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
                     evento.forEach(item=>{
                     let fecha = new Date(item.fecha)
-                    let mes = fecha.getMonth()+1
+                    let mes = fecha.getMonth()
                     let dia = fecha.getDate()
                     let año = fecha.getFullYear()
                     let hora = fecha.getHours()
@@ -41,7 +42,7 @@
                             </button>
                         <%}else{%>
                             <button disabled>
-                                <a href="/eventos/<%= item._id.toString() %>">VER EVENTO</a>
+                                <a href="/eventos/evento/<%= item._id.toString() %>">VER EVENTO</a>
                             </button>
                         <%}%>
                     </article>

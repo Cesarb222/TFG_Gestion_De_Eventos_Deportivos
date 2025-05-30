@@ -57,7 +57,11 @@ app.use((req, res, next) => {
   app.locals.ErrorEmailRepetido = req.flash('ErrorEmailRepetido');
   app.locals.contraseñasNoCoincide = req.flash('contraseñasNoCoincide');
   app.locals.fechaEvento = req.flash("fechaEvento")
+  app.locals.google = req.flash("google")
   app.locals.fechaEvento2 = req.flash("fechaEvento2")
+  app.locals.cuentaGoogle = req.flash("cuentaGoogle")
+  app.locals.recuperarEmail = req.flash("recuperarEmail")
+  app.locals.recuperarContraseñaFallo = req.flash("recuperarContraseñaFallo")
   app.locals.user = req.user;
   next();
 });
@@ -79,6 +83,7 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
+app.use((req, res, next) => { console.log(req.method, req.url); next(); });
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development

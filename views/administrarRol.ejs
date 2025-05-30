@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrar Rol</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="shortcut icon" href="/images/logoTFG.webp" type="image/x-icon">
+</head>
+<body>
+    <%- include("partials/header")%>
+    <main class="mainAdminRol">
+        <section>
+            <form id="actualizarRol">
+                <h1>Actualiza el rol por su email</h1>
+                <input type="text" required placeholder="ej: nombre@ticketdeporte.com" name="correo">
+                
+        </form>
+        </section>
+        <section class="contedorTabla">
+            <table class="resultados">
+
+            </table>
+        </section>
+        
+    </main>
+    <script src="/javascripts/adminRol.js"></script>
+</body>
+</html>

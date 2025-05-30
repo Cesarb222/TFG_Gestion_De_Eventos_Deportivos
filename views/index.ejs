@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <title></title>
+    <title>TicketDeporte</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="shortcut icon" href="/images/logoTFG.webp" type="image/x-icon">
@@ -29,9 +29,16 @@
           
           
         <div class="cartas">
-          <% for (let i = 1; i < eventos.length && i < 5; i++) {
+          <% for (let i = 0; i < eventos.length; i++) {
+            if(i == 4){
+              break;
+            }
+            if(eventos[i].estado==false){
+              continue;
+            }
+            
               let fecha = new Date(eventos[i].fecha)
-              let mes = fecha.getMonth()+1
+              let mes = fecha.getMonth()
               let dia = fecha.getDate()
               let año = fecha.getFullYear()
               let hora = fecha.getHours()
@@ -48,7 +55,7 @@
               <article class="abajo">
                 <p><strong><%= eventos[i].titulo %></strong></p>
                 <p> 📅 <%=`${dia} ${meses[mes]} ${año}, ${hora}:${min}`%></p>
-                <button><a href="/sector/<%= eventos[i]._id.toString() %>">Ver evento</a></button>
+                <button><a href="/eventos/evento/<%= eventos[i]._id.toString() %>">Ver evento</a></button>
               </article>
               
             </section>
@@ -67,11 +74,11 @@
             <img src="/images/football-ball-soccer-svgrepo-com.svg" alt="">
             <p><strong>Futbol</strong></p>
           </article>
-          <article id="Rugby" class="categoria">
+          <article id="rugby" class="categoria">
             <img src="/images/ball-rugby-svgrepo-com%20(1).svg" alt="">
             <p><strong>Rugby</strong></p>
           </article>
-          <article id="Rugby" class="categoria">
+          <article id="otros" class="categoria">
             <img src="/images/ticket-svgrepo-com.svg" alt="">
             <p><strong>Más Eventos</strong></p>
           </article>
@@ -80,7 +87,7 @@
     </main>
     <%- include('partials/footer') %>
   <script src="/javascripts/header.js"></script>
-
+  <script src="/javascripts/enlaces.js"></script>
   </body>
 
 </html>

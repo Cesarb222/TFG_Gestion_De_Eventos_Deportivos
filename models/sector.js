@@ -9,6 +9,7 @@ const sectorSchema = new Schema({
     multiplicador:{type:Number}
 });
 
+//Busco por nombre del sector
 sectorSchema.methods.findByNameSector = async function (nombre) {
     const sectores = mongoose.model("sector",sectorSchema)
     const sector = await sectores.findOne({
@@ -16,7 +17,7 @@ sectorSchema.methods.findByNameSector = async function (nombre) {
     })
     return sector;
 }
-
+//Busco por la zona del sector
 sectorSchema.methods.findByZonaSector = async function (id) {
     const sectores = mongoose.model("sector",sectorSchema)
     const sector = await sectores.findById(id)

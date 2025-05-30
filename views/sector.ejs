@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/style.css">
     <title>Sector</title>
+    <link rel="shortcut icon" href="/images/logoTFG.webp" type="image/x-icon">
 </head>
 
 <body>
@@ -393,12 +394,9 @@
             <script>
                 let path = document.querySelectorAll('.sectores')
                 const evento = "<%= idEvento %>";
-                console.log(evento)
-                console.log(path)
                 path.forEach(item => {
                     item.style.cursor = "pointer"
                     item.addEventListener("click", (e) => {
-                        alert(e.target.id)
                         window.location.href = `/butaca/seleccion/${e.target.id}/${evento}`
                     })
                 })

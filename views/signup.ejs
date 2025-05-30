@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registrarse</title>
+    <link rel="shortcut icon" href="/images/logoTFG.webp" type="image/x-icon">
         <link rel='stylesheet' href='/stylesheets/singup.css' />
 </head>
 <body>
@@ -22,8 +23,8 @@
                     <h1>ACCESO DE USUARIOS</h1>
 
                     <div>
-                        <button class="registro">INICIAR SESIÓN</button>
-                        <button >REGISTRARSE</button>
+                        <button class="registro" id="login">INICIAR SESIÓN</button>
+                        <button id="registro">REGISTRARSE</button>
                     </div>
                     <% if (ErrorRegistro || ErrorEmailRepetido || contraseñasNoCoincide) { %>
                         <p class="error">
@@ -49,5 +50,6 @@
         
         
     </main>
+    <script src="/javascripts/enlaces.js"></script>
 </body>
 </html>

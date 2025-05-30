@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/recuperarContraseña.css' />
+    <link rel="shortcut icon" href="/images/logoTFG.webp" type="image/x-icon">
+    <title>Recuperar Contraseña</title>
+</head>
+<body>
+    <main class="mainRecuperar">
+        <section>
+            <img src="/images/logoTFG.webp" alt="">
+        </section>
+        <h1>RECUPERAR CONTRASEÑA</h1>
+        <hr>
+        <%if(cuentaGoogle){%>
+            <p class="error"><%=cuentaGoogle%></p>
+        <%}%>
+        <%if(recuperarEmail){%>
+            <p class="error"><%=recuperarEmail%></p>
+        <%}%>
+        <%if(recuperarContraseñaFallo){%>
+            <p class="error"><%=recuperarContraseñaFallo%></p>
+        <%}%>
+        <form action="/users/recuperar" method="POST" id="recuperar">
+            <input type="email" name="correo" id="correo" placeholder="Email">
+            <div>
+                <button type="button"><a href="/users/signin">CANCELAR</a></button>
+                <button type="submit">ENVIAR EMAIL</button>
+            </div>
+        </form>
+    </main>
+    <script src="/javascripts/recuperarContraseña.js"></script>
+</body>
+</html>

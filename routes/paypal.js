@@ -128,6 +128,7 @@ router.get('/success', (req, res) => {
             let arrayEntrada = []
             let idEntrada = ""
             let eventoTituloEmail = ""
+            //Consulto en la bd para sacar la info de la entrada
             for (const item of entradas) {
                 const confirmarEntrada = new entrada(item);
                 let entrada2 = await confirmarEntrada.addEntrada();
@@ -147,6 +148,7 @@ router.get('/success', (req, res) => {
                 let estadioId = new estadio();
                 estadioId = await estadioId.findByIDEstadio(sectorId.estadio.toString());
 
+                //Creo el objeto guardandolo en el array recien declarado arriba
                 arrayEntrada.push({
                     cod_qr: item.cod_qr,
                     precio: item.precio,
@@ -161,11 +163,12 @@ router.get('/success', (req, res) => {
                 });
                 eventoTituloEmail = eventoId.titulo
             }
+            //Si todo esta correcto se le manda al usuario un email de confirmación 
             const transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
                     user: 'cesar33jverne@gmail.com',
-                    pass: 'kkjm tzwi cymo bfwi'
+                    pass: `${nodemailerKey.key}`
                 }
             });
 
@@ -184,7 +187,7 @@ router.get('/success', (req, res) => {
                 Gracias por comprar las entradas para este evento.<br>
                 Las podrás encontrar en tu perfil, en la sección <b>Mis entradas</b>.
             </p>
-            <a href="http://localhost:3000/" style="display:inline-block;margin-top:10px;padding:10px 24px;background:#ff6700;color:#fff;text-decoration:none;border-radius:6px;font-weight:bold;">
+            <a href="http://localhost:3000/users/misEntradas" style="display:inline-block;margin-top:10px;padding:10px 24px;background:#ff6700;color:#fff;text-decoration:none;border-radius:6px;font-weight:bold;">
                 Ir a Mis Entradas
             </a>
         </div>
@@ -203,6 +206,6 @@ router.get('/success', (req, res) => {
 
 });
 
-router.get('/cancel', (req, res) => res.send('Pago cancelado'));
+router.get('/cancel', (req, res) => res.send("Pago cancelado <a href='/'>Volver a inicio</a>"));
 
 module.exports = router;

@@ -3,7 +3,8 @@
   <head>
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="/stylesheets/butacas.css" />
-
+    <link rel="shortcut icon" href="/images/logoTFG.webp" type="image/x-icon">
+    <title>Seleccionar butaca</title>
   </head>
   <body>
     <%- include('partials/header') %>
@@ -12,7 +13,8 @@
         <div class="terreno">TERRENO DE JUEGO</div>
         <div class="container-scroll">
           <div class="container">
-            <% if (butacas) {
+            <% //Ordeno las filas  
+              if (butacas) {
                 let ordenacion = butacas.sort((a, b) => {
                   if (a.fila === "fila10") return 1;
                   if (b.fila === "fila10") return -1;

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi perfil</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="shortcut icon" href="/images/logoTFG.webp" type="image/x-icon">
+</head>
+<body>
+    <%- include("partials/header")%>
+    <main class="mainPerfil">
+        <section>
+            <p><strong>Hola de nuevo, <%=usuario.nombre%></strong> </p>
+        </section>
+        <section>
+            <h1>¡Bienvenid@ a TicketDeporte!</h1>
+            <p>Encuentra y compra entradas para los mejores eventos deportivos</p>
+        </section>
+        <section>
+            <article>
+                <img src="/images/ticket-svgrepo-com (1).svg" alt="logo ticket" class="logoTicket">
+                <p><strong>Mis tickets</strong></p>
+                <p>Gestiona y descarga tus entradas compradas</p>
+                <div class="botones">
+                    <button><a href="/users/misEntradas">MIS ENTRADAS</a></button>
+                </div>
+            </article>
+            <article>
+                <img src="/images/search-svgrepo-com.svg" alt="Logo lupa " class="logoTicket">
+                <p><strong>Explorar Eventos</strong></p>
+                <p>Descubre nuevos eventos y espectáculos</p>
+                <div class="botones">
+                    <button><a href="/eventos/">VER EVENTOS</a></button>
+                </div>
+            </article>
+        </section>
+
+        <section>
+            <%if(usuario.rol=="admin"){%>
+                <div>
+                    <h3>Administrar eventos</h3>
+                    <button><a href="/admin/AdministrarRoles">Administrar Roles</a></button>
+                    <button><a href="/admin/AdministrarEventos">Administrar Eventos</a></button>
+                    <button><a href="/admin/nuevoEvento">Crear Evento</a></button>
+                </div>
+            <%}%>
+        </section>
+        <section>
+            <h2>Información Personal</h2>
+            <hr>
+            
+
+            <div>
+                <p>Nombre</p>
+                <p><%=usuario.nombre%></p>
+            </div>
+            
+
+            <%if(usuario.apellidos){%>
+                <div>
+                <p>Apellidos</p>
+                <p><%=usuario.apellidos%></p>
+                </div>
+            <%}%>
+            
+            
+        </section>
+    </main>
+    <%- include("partials/footer")%>
+</body>
+</html>

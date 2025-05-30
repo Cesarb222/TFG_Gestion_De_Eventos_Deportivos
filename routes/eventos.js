@@ -12,6 +12,26 @@ const pdf = require("pdf-creator-node");
 const fs = require("fs");
 
 
+router.get("/",async function(req,res,next){
+    let evento = new eventos()
+    evento = await evento.eventosDisponibles()
+    res.render("todosEventos",{evento})
+})
+
+router.get("/evento/:id",async function(req,res,next){
+    let id = req.params.id
+    console.log(id)
+    let evento = new eventos()
+    evento = await evento.findByID(id)
+    console.log(evento)
+    res.render("evento",{evento})
+})
+router.get("/:genero",async function(req,res,next){
+    let genero = req.params.genero
+    let evento = new eventos()
+    evento = await evento.findGenero(genero)
+    res.render("eventoGenero",{evento})
+})
 /* GET users listing. */
 router.post('/busqueda', async function (req, res, next) {
     const { nombre } = req.body
@@ -20,13 +40,16 @@ router.post('/busqueda', async function (req, res, next) {
     res.render("eventoBusqueda", { evento, nombre })
 });
 
-router.get("/pdf/:ids", async function (req, res, nex) {
+router.get("/pdf/:ids",isAuthenticated,async function (req, res, nex) {
+    //recojo los ids por parametros y los separo
     let ids = req.params.ids
     let id = ids.split("-")
-    const idsEntrada = id.filter(id => id !== '');
+    //filtro los ids para que no contengan espacios en blaco
+    const idsEntrada = id.filter(id => id !== "");
 
     let arrayEntrada = []
 
+    //Saco toda la informacion necesaria para utilizar en el template
     for (const item of idsEntrada) {
         let entradas = new entrada()
         let entradaEvento = await entradas.findById(item)
@@ -46,7 +69,7 @@ router.get("/pdf/:ids", async function (req, res, nex) {
 
         const meses=["Ene", "Feb" , "Mar" , "Abr" , "May" , "Jun" , "Jul" , "Ago" , "Sep" , "Oct"
         , "Nov" , "Dic" ] 
-        let mes=fecha.getMonth()+1 
+        let mes=fecha.getMonth()
         let dia=fecha.getDate() 
         let año=fecha.getFullYear() 
         let hora=fecha.getHours() 
@@ -65,11 +88,14 @@ router.get("/pdf/:ids", async function (req, res, nex) {
     }
 
     try{
+        //los datos a mandar al ejs:
         const data = {
             arrayEntrada
         }
+        //Se manda a ese fichero a descargarEntradas y 
     const html = await ejs.renderFile(path.join(__dirname, "../views/descargarEntradas.ejs"), data, {async: true});
 
+    //El documento, sera un htmlk y tendra ese nombre.
     const document = {
         html: html,
         data: {},
@@ -77,12 +103,15 @@ router.get("/pdf/:ids", async function (req, res, nex) {
         type: "",
     };
 
+    //Aqui ponemos las opciones del documento
+    //en mi caso lo dejo estandard
     const options = {
         format: "A4",
         orientation: "portrait",
         border: "10mm",
     };
 
+    //Creo el pdf y hago la respuesta sea descarga.
     await pdf.create(document, options);
 
     res.download("./entradas.pdf");

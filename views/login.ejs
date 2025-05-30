@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <title>Document</title>
+    <link rel="shortcut icon" href="/images/logoTFG.webp" type="image/x-icon">
+    <title>Inicio de sesión </title>
 </head>
 <body>
     
@@ -25,8 +26,8 @@
                     <h1>ACCESO DE USUARIOS</h1>
 
                     <div>
-                        <button>INICIAR SESIÓN</button>
-                        <button class="registro">REGISTRARSE</button>
+                        <button id="login">INICIAR SESIÓN</button>
+                        <button class="registro" id="registro">REGISTRARSE</button>
                     </div>
                     <% if (ErrorRegistro || ErrorEmailRepetido || contraseñasNoCoincide) { %>
                         <p class="error">
@@ -35,12 +36,16 @@
                             <%= contraseñasNoCoincide ? contraseñasNoCoincide : '' %>
                         </p>
                     <% } %>
+
+                    <%if(google){%>
+                        <p class="error"><%=google%></p>
+                    <%}%>
                     <form action="/users/signin" method="post">
                         <input type="email" name="email" placeholder="Email">
                         <input type="password" name="password" placeholder="Contraseña">
                         <button type="submit">INICIAR SESIÓN</button>
                     </form>
-                    <a href="">¿Olvidaste su contraseña?</a>
+                    <a href="/users/recuperar">¿Olvidaste su contraseña?</a>
                     <button class="buttonGoogle"><a class="buttonGoogle" href="/users/auth/google">
                         <img src="/images/google-logo.png" alt="Logo de google">
                     </a></button>
@@ -49,5 +54,6 @@
         
         
     </main>
+    <script src="/javascripts/enlaces.js"></script>
 </body>
 </html>

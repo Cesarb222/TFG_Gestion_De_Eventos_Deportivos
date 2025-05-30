@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="shortcut icon" href="/images/logoTFG.webp" type="image/x-icon">
+    <title>Administrar Eventos</title>
+</head>
+
+<body>
+    <%- include("partials/header")%>
+    <main class="col-8 mx-auto mt-5 mainAdmin">
+        <div class="table-responsive rounded-4">
+        <table class="table rounded-2 ">
+            <thead>
+                <tr>
+                    <th>EVENTO</th>
+                    <th>FECHA</th>
+                    <th>ESTADO</th>
+                    <th>OPCION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%
+                    evento.forEach(item=>{%>
+                        <tr>
+                            <td><strong class="text-uppercase"><%=item.titulo%></strong></td>
+                            <td><%=item.fecha%></td>
+                            <%if(item.estado){%>
+                                <td>Disponible</td>
+                            <%}else{%>
+                                <td >Cancelado</td>
+                            <%}%>
+                            
+                            <td class="d-flex flex-column flex-lg-row gap-3 ">
+                                <%if(item.estado){%>
+                                    <button class="bg-danger btn text-light botonCancelar" value="<%=item.idEvento%>"><strong>CANCELAR</strong></button>
+                                    <button class="bg-success btn text-light botonActualizar" value="<%=item.idEvento%>"><strong>ACTUALIZAR</strong></button>
+                                <%}else{%>
+                                    <button class="bg-danger btn text-light botonCancelar" disabled value="<%=item.idEvento%>"><strong>CANCELAR</strong></button>
+                                    <button class="bg-success btn text-light botonActualizar" disabled value="<%=item.idEvento%>"><strong>ACTUALIZAR</strong></button>
+                                <%}%>
+                                
+                            </td>
+                        </tr>
+                    <%})
+                %>
+                
+            </tbody>
+        </table>
+    </div>
+    <div class="formularios">
+
+    </div>
+    </main>
+    <%- include("partials/footer")%>
+    <script src="/javascripts/adminEventos.js"></script>
+</body>
+
+</html>

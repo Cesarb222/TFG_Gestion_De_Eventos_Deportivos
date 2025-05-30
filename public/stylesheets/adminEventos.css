@@ -1,0 +1,155 @@
+.mainAdmin{
+    position: relative;
+    /* height: 100vh; */
+}
+.formularios {
+    /* width: 50%; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 1px 1px 20px -8px  #868686;
+}
+.formularios h1{
+    font-size: 17px;
+    font-weight: bold;
+    margin: 0;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.formularios hr{
+    margin:0 auto;
+    margin-top: 10px;
+    background-color: #ff6700;
+    border-color: #ff6700;
+    width: 460px;
+    height: 3px;
+    border-top: #ff6700;
+    border-left: none;
+    
+}
+.formularios section img{
+    width: 70px;
+    height: 70px;
+    transition: transform 0.4s ease-in-out;
+    margin: 0 auto;
+}
+.formularios section img:hover{
+    cursor: pointer;
+    transform: rotate(-40deg);
+}
+.formularios section{
+    background: linear-gradient(90deg, #ff6700,#ff8b2c);
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    border-bottom-right-radius:0px;
+    border-bottom-left-radius:0px;
+}
+.formularios form{
+    margin-top: 20px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    /* align-items: center; */
+    /* margin-left: 40px; */
+}
+.error{
+    color: red;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+.formularios form input{
+    display: block;
+    width: calc(100% - 7rem);
+    /* align-self: center; */
+    height: 3rem;
+    margin-bottom: 1rem;
+    background-color: #dddddb;
+    border: none;
+    border-radius: 5px;
+    padding: 0 10px;
+    margin: 0 auto;
+    box-shadow: 1px 1px 20px -8px  #868686;
+    transition: all 0.3s ease-in;
+    
+}
+.formularios form input:focus{
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 20px -5px #ff6700;
+}
+.formularios form div{
+    margin-top: 30px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.formularios form div button{
+    width: 12rem;
+    align-self: center;
+    background: linear-gradient(90deg, #ff6700,#ff8b2c);
+    box-shadow: 1px 1px 20px -5px #ff6700;
+    border: navajowhite;
+    padding: 15px 19px;
+    color: #fff;
+    font-weight: bolder;
+    font-size: 17px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.formularios form div button a{
+    text-decoration: none;
+    color: #fff;
+}
+
+@media (max-width:500px) {
+    .formularios form{
+        width: 350px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .formularios form input{
+        width: 70%
+    }
+    .formularios hr{
+        width: 300px;
+    }
+}
+
+@media (max-width:360px) {
+    .formularios form{
+        width: 250px;
+        
+    }
+    .formularios hr{
+        width: 200px;
+    }
+    .formularios form div{
+        flex-wrap: wrap;
+    }
+    .formularios form div button:first-child{
+        order: 2;
+    }
+    .formularios form div button:nth-child(2){
+        order: 1;
+    }
+}
+
+@media (max-width:260px) {
+    .formularios form{
+        width: 200px;
+        
+    }
+    .formularios hr{
+        width: 200px;
+    }
+}

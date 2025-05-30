@@ -44,8 +44,9 @@ header svg{
 }
 header nav ul{
     display: flex;
-    list-style: none;
-    margin-left: auto;
+    list-style: none ;
+    margin-left: auto; 
+    align-items: center;
     margin-right: 30px;
 }
 header nav ul li a{
@@ -64,27 +65,27 @@ header nav ul li{
     overflow: hidden;
 }
 header nav ul li button {
-    position: relative;
-    z-index: 1;
-    background: #fff;
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
+    position: relative ;
+    z-index: 1 ;
+    background: #fff ;
+    border: none ;
+    cursor: pointer ;
+    overflow: hidden ;
     border-radius: 15rem;
 }
 
 header nav ul li button::before {
-    content: "";
-    position: absolute;
-    clip-path: circle(50% at 50% 50%);
-    top: 0;
-    left: -50px;
+    content: "" ;
+    position: absolute ;
+    clip-path: circle(50% at 50% 50%) ;
+    top: 0 ;
+    left: -50px ;
     height: 100%;
-    width: 0;
-    background-color: #1c3e4e;
-    padding: 20px;
-    z-index: -1;
-    transition: width 0.5s ease-in-out;
+    width: 0 ;
+    background-color: #1c3e4e ;
+    padding: 20px ;
+    z-index: -1 ;
+    transition: width 0.5s ease-in-out ;
     
 }
 
@@ -168,7 +169,7 @@ header nav form button{
         display: flex;
         flex-direction: column;
         text-align: center;
-        justify-content: center;
+        justify-content: center !important;
         row-gap: 2rem;
         margin: 0;
         height: 101vh;
