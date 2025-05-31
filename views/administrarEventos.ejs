@@ -14,7 +14,11 @@
 <body>
     <%- include("partials/header")%>
     <main class="col-8 mx-auto mt-5 mainAdmin">
+        <%if(evento.length >0){%>
         <div class="table-responsive rounded-4">
+            
+
+            
         <table class="table rounded-2 ">
             <thead>
                 <tr>
@@ -52,7 +56,15 @@
                 
             </tbody>
         </table>
+        <%}else{%>
+            <div class="d-flex flex-column aling-items-center mt-5">
+                <h2 class="text-center text-uppercase tituloAdmin mt-5 text-bold ">No tienes ningun evento para Administrar</h2>
+                <button class="botonEvento"><a href="/admin/nuevoEvento">CREAR EVENTO</a></button>
+            </div>
+            
+        
     </div>
+    <%}%>
     <div class="formularios">
 
     </div>

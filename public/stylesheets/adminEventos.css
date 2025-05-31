@@ -110,6 +110,25 @@
     text-decoration: none;
     color: #fff;
 }
+.botonEvento{
+    width: 12rem;
+    align-self: center;
+    background: linear-gradient(90deg, #ff6700,#ff8b2c);
+    box-shadow: 1px 1px 20px -5px #ff6700;
+    border: navajowhite;
+    padding: 15px 19px;
+    color: #fff;
+    font-weight: bolder;
+    font-size: 17px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+.botonEvento a{
+    text-decoration: none;
+    color: #fff;
+}
 
 @media (max-width:500px) {
     .formularios form{
@@ -122,6 +141,9 @@
     }
     .formularios hr{
         width: 300px;
+    }
+    .tituloAdmin{
+        margin-top: 90px;
     }
 }
 

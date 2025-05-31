@@ -44,7 +44,7 @@ router.get("/administrarEventos",isAuthenticated, async function (req, res, next
         res.redirect("/")
     }
     let eventosArray = new eventos()
-    eventosArray = await eventosArray.findAll()
+    eventosArray = await eventosArray.findEventosUsuarios(req.user._id)
     let evento = []
     for (const item of eventosArray) {
         let fecha = new Date(item.fecha)
@@ -251,7 +251,8 @@ router.post('/nuevoEvento', isAuthenticated, upload.single('imagen'), async func
             descripcion: req.body.descripcion,
             precio: req.body.precio,
             estado: true,
-            lugar: "67fa83550a116aaecc4cfe81"
+            lugar: "67fa83550a116aaecc4cfe81",
+            usuario: req.user._id
         })
         await evento.addEvent()
 

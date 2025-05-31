@@ -10,7 +10,8 @@ const eventoSchema = new Schema({
     descripcion: {type:String,required:true},
     lugar: {type: mongoose.Schema.Types.ObjectId, ref:'estadio',required:true},
     precio: {type:Number,required:true},
-    estado: {type:Boolean}
+    estado: {type:Boolean},
+    usuario: { type: mongoose.Schema.Types.ObjectId, ref: 'usuario', required: true }
 })
 
 eventoSchema.methods.findAll = async function () {
@@ -19,6 +20,14 @@ eventoSchema.methods.findAll = async function () {
     .then(result =>{return result})
     .catch(error => console.log(error))
 }
+
+eventoSchema.methods.findEventosUsuarios = async function (idUsuario) {
+    const eventos = mongoose.model("eventos",eventoSchema)
+    return await eventos.find({usuario:idUsuario})
+    .then(result =>{return result})
+    .catch(error => console.log(error))
+}
+
 
 //PAra buscar los eventos con dicho genero
 eventoSchema.methods.findGenero = async function (genero) {
